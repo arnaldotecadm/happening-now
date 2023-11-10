@@ -1,4 +1,4 @@
-package com.happeningnow.happeningnow;
+package com.happeningnow;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
