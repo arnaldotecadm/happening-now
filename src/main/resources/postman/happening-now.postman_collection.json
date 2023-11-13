@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "happening-now",
+			"name": "helloWorld",
 			"request": {
 				"method": "GET",
 				"header": [],
