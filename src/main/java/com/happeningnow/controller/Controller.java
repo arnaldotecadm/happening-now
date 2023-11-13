@@ -1,11 +1,12 @@
-package com.happeningnow.com.happeningnow;
+package com.happeningnow.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 @RestController
-public class HelloWorldController {
+public class Controller {
     @RequestMapping
-    public String  getHelloWord(){
-        return "Hellor World!!";
+    public String getHelloWorld(){
+        return "Hello World!!";
     }
 }
