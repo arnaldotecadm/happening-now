@@ -1,13 +1,17 @@
 package com.happeningnow.Model;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
-
 import java.util.UUID;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 @Entity
-@Table(name = "comments")
-public class Comments {
+@Table(name = "comment")
+public class Comment {
     @Id
     @UuidGenerator
     private UUID id;
@@ -17,6 +21,4 @@ public class Comments {
     private UUID userCreation;
     private int likes;
     private int deslikes;
-
-
 }

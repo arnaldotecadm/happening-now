@@ -1,20 +1,23 @@
 package com.happeningnow.Model;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
-import org.springframework.core.metrics.StartupStep;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 @Table(name = "event")
 public class Event {
     @Id
     @UuidGenerator
-    private UUID eventId;
+    private UUID id;
     private String name;
     private String description;
     @Column(name = "start_date")
@@ -39,9 +42,5 @@ public class Event {
     @ManyToOne
     private Location location;
     @OneToMany
-    private List<Comments> comments;
-
-
-
-
+    private List<Comment> comments;
 }
