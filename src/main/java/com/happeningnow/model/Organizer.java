@@ -3,6 +3,8 @@ package com.happeningnow.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
+
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -18,4 +20,6 @@ public class Organizer {
     private String description;
     @Column(nullable = false)
     private String address;
+    @ManyToMany(mappedBy = "organizerList")
+    private List<Event> eventList;
 }

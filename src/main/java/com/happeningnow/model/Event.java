@@ -38,6 +38,8 @@ public class Event {
     private List<Artist> artistList;
     @ManyToMany
     private List<Category> categoryList;
+    @ManyToMany
+    private List<Organizer> organizerList;
     @OneToMany
     private List<Comment> commentList;
 }
