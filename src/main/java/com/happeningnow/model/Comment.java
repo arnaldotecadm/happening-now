@@ -1,4 +1,4 @@
-package com.happeningnow.Model;
+package com.happeningnow.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,8 +6,6 @@ import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 
 @Entity
 @Table(name = "comment")
