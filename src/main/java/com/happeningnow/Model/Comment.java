@@ -10,12 +10,13 @@ import java.util.UUID;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "comments")
-public class Comments {
+@Table(name = "comment")
+public class Comment {
     @Id
     @UuidGenerator
     private UUID id;
     private String title;
+    @Column(nullable = false)
     private String comment;
     @Column(name = "user_creation")
     private UUID userCreation;

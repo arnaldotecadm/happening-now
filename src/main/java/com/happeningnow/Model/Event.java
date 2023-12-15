@@ -1,20 +1,24 @@
 package com.happeningnow.Model;
 
 import jakarta.persistence.*;
+import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
-import org.springframework.core.metrics.StartupStep;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 @Table(name = "event")
 public class Event {
     @Id
     @UuidGenerator
-    private UUID eventId;
+    private UUID id;
+    @Column(nullable = false)
     private String name;
     private String description;
     @Column(name = "start_date")
@@ -31,17 +35,11 @@ public class Event {
     private String webPage;
     private byte[] thumbnail;
     @ElementCollection()
-    private List<String> tags = new ArrayList<>();
+    private List<String> tagList = new ArrayList<>();
     @ManyToMany
-    private List<Artist> artist;
+    private List<Artist> artistList;
     @ManyToMany
-    private List<Category> category;
-    @ManyToOne
-    private Location location;
+    private List<Category> categoryList;
     @OneToMany
-    private List<Comments> comments;
-
-
-
-
+    private List<Comment> commentList;
 }
