@@ -4,12 +4,13 @@ import com.happeningnow.model.Organizer;
 import com.happeningnow.repository.OrganizerRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
-
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -18,37 +19,24 @@ import java.util.UUID;
 @Service
 public class ServiceOrganizer {
 
-    //@Autowired
+    @Autowired
     private final OrganizerRepository organizerRepository;
 
     @Transactional
-    public Organizer create(Organizer organizer){
-        organizer.setId(null);
+    public Organizer save(Organizer organizer){
         organizer = this.organizerRepository.save(organizer);
         return organizer;
     }
 
-    public Page<Organizer> findById(UUID uuid){
-
-        Sort sort = Sort.by("name").ascending();
-        Pageable pageable = PageRequest.of(0, 50, sort);
-
-        return this.organizerRepository.findAll(pageable);
+    public Optional<Organizer> findById(UUID uuid){
+        return this.organizerRepository.findById(uuid);
     }
 
-    @Transactional
-    public Organizer update(Organizer organizer){
-        Organizer newOrganizer = findById(organizer.getId());
-        newOrganizer.setName(organizer.getName());
-        return this.organizerRepository.save(newOrganizer);
+    public Page<Organizer> findAll(@PageableDefault(sort = "name", direction = Sort.Direction.ASC, page = 1, size = 50) Pageable pageable){
+     return organizerRepository.findAll(pageable);
     }
 
     public void delete(UUID uuid){
-        findById(uuid);
-        try {
-            this.organizerRepository.deleteById(uuid);
-        }catch (Exception e){
-            throw new RuntimeException();
-        }
+        this.organizerRepository.deleteById(uuid);
     }
 }
