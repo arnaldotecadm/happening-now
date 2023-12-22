@@ -24,8 +24,7 @@ public class ServiceOrganizer {
 
     @Transactional
     public Organizer save(Organizer organizer){
-        organizer = this.organizerRepository.save(organizer);
-        return organizer;
+        return this.organizerRepository.save(organizer);
     }
 
     public Optional<Organizer> findById(UUID uuid){
