@@ -7,9 +7,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 @Table(name = "organizer")
+
 public class Organizer {
     @Id
     @UuidGenerator
