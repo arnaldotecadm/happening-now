@@ -2,22 +2,20 @@ package com.happeningnow.service;
 
 import com.happeningnow.model.Organizer;
 import com.happeningnow.repository.OrganizerRepository;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.*;
+import static org.mockito.Mockito.mock;
 
 @SpringBootTest
 @ActiveProfiles("test")
 class ServiceOrganizerTest {
 
+    @Mock
     Organizer organizer;
 
     @Mock
@@ -27,22 +25,21 @@ class ServiceOrganizerTest {
     ServiceOrganizer serviceOrganizer;
 
     @Test
+    @DisplayName("Must save organizer")
     void save() {
-        var organizerOne = new Organizer();
-        organizerOne.setId(UUID.randomUUID());
-        organizerOne.setName("Organizer One");
-        organizerOne.setAddress("Amial");
+        //Arrange
+        UUID id = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
+        Organizer mockOrganizer = mock(Organizer.class);
 
-        var organizerTwo = new Organizer();
-        organizerTwo.setId(UUID.randomUUID());
-        organizerTwo.setName("Organizer Two");
-        organizerTwo.setAddress("25 de Abril");
+        //Act
+        Mockito.when(mockOrganizer.getId()).thenReturn(id);
+        Mockito.when(organizerRepository.save(mockOrganizer)).thenReturn(organizer);
+        Mockito.when(organizer.getId()).thenReturn(id);
 
-        Mockito.when(organizerRepository.save(organizerOne)).thenReturn(organizer);
+        var result = serviceOrganizer.save(mockOrganizer);
 
-        var result = organizerRepository.save(organizerOne);
-
-        Assertions.assertEquals(result.getId(), organizerTwo.getId());
+        // Assert
+        Assertions.assertEquals(result.getId(), mockOrganizer.getId());
     }
 
     @Test

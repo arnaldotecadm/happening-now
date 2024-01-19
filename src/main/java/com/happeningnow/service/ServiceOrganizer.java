@@ -30,7 +30,7 @@ public class ServiceOrganizer {
         return this.organizerRepository.findById(uuid);
     }
 
-    public Page<Organizer> findAll(@PageableDefault(sort = "name", direction = Sort.Direction.ASC, page = 1, size = 50) Pageable pageable){
+    public Page<Organizer> listOrganizer(@PageableDefault(sort = "name", direction = Sort.Direction.ASC, page = 1, size = 50) Pageable pageable){
      return organizerRepository.findAll(pageable);
     }
 
