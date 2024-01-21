@@ -31,10 +31,10 @@ public class ServiceOrganizer {
     }
 
     public Page<Organizer> listOrganizer(@PageableDefault(sort = "name", direction = Sort.Direction.ASC, page = 1, size = 50) Pageable pageable){
-     return organizerRepository.findAll(pageable);
+        return organizerRepository.findAll(pageable);
     }
 
-    public void delete(UUID uuid){
+    public void deleteById(UUID uuid){ // ask / alteration void to Organizer // optional name altered delete to deleteById
         this.organizerRepository.deleteById(uuid);
     }
 }

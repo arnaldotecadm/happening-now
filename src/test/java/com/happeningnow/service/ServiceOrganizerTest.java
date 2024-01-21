@@ -33,7 +33,7 @@ class ServiceOrganizerTest {
 
         //Act
         Mockito.when(mockOrganizer.getId()).thenReturn(id);
-        Mockito.when(organizerRepository.save(mockOrganizer)).thenReturn(organizer);
+        Mockito.when(serviceOrganizer.save(mockOrganizer)).thenReturn(organizer);
         Mockito.when(organizer.getId()).thenReturn(id);
 
         var result = serviceOrganizer.save(mockOrganizer);
@@ -58,21 +58,22 @@ class ServiceOrganizerTest {
 
         //Assert
         Assertions.assertEquals(result, mockOrganizer.getId());
-
     }
-    @Test
-    @DisplayName("Must find all organizer in page")
-    void findAll() {
-        //Arrange
 
-        //Act
+      @Test
+      @DisplayName("Must find all organizer in page")
+      void findAll() {
+       //Arrange
 
-        //Assert
+       // Act
+
+       //Assert
+
     }
 
     @Test
     @DisplayName("Must delete organizer")
-    void delete() {
+    void deleteById(){
         //Arrange
 
         //Act
