@@ -62,12 +62,18 @@ class ServiceOrganizerTest {
 
       @Test
       @DisplayName("Must find all organizer in page")
-      void findAll() {
-       //Arrange
+      void listOrganizer() {
+        //Arrange
+        UUID id = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
+        Organizer mockOrganizer = mock(Organizer.class);
+        Organizer mockOrganizer1 = mock(Organizer.class);
+        // Act
+        serviceOrganizer.save(mockOrganizer);
+        serviceOrganizer.save(mockOrganizer1);
 
-       // Act
+        serviceOrganizer.listOrganizer();
 
-       //Assert
+        //Assert
 
     }
 
@@ -75,9 +81,12 @@ class ServiceOrganizerTest {
     @DisplayName("Must delete organizer")
     void deleteById(){
         //Arrange
+        UUID id = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
+        Organizer mockOrganizer = mock(Organizer.class);
 
         //Act
-
+        serviceOrganizer.save(organizer);
+        serviceOrganizer.deleteById(organizer.getId());
         //Assert
 
     }
