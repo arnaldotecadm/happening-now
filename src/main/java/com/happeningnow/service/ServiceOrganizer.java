@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -30,7 +31,7 @@ public class ServiceOrganizer {
         return this.organizerRepository.findById(uuid);
     }
 
-    public Page<Organizer> listOrganizer(@PageableDefault(sort = "name", direction = Sort.Direction.ASC, page = 1, size = 50) Pageable pageable){
+    public Page<Organizer> listOrganizer(@PageableDefault(sort = "name", direction = Sort.Direction.ASC, page = 1, size = 50) PageRequest pageable){ //tirei Pageable e coloquei PageRequest
         return organizerRepository.findAll(pageable);
     }
 
