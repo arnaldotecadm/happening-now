@@ -92,6 +92,5 @@ class ServiceOrganizerTest {
                 serviceOrganizer.listOrganizer(PageRequest.of(0,50, Sort.Direction.ASC,"name"));
 
         Assertions.assertTrue(listOfOrganizer.getContent().isEmpty());
-
     }
 }
