@@ -2,8 +2,6 @@ package com.happeningnow.service;
 
 import com.happeningnow.model.Organizer;
 import com.happeningnow.repository.OrganizerRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

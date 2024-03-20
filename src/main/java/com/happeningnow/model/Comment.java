@@ -6,6 +6,8 @@ import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 @Table(name = "comment")

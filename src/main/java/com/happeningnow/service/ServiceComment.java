@@ -1,18 +1,35 @@
 package com.happeningnow.service;
 
-import com.happeningnow.repository.CommentsRepository;
+import com.happeningnow.model.Comment;
+import com.happeningnow.repository.CommentRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+import java.util.Optional;
+import java.util.UUID;
 
-public class ServiceComments {
+@Service
+public class ServiceComment {
 
-    private final CommentsRepository commentsRepository;
+    private final CommentRepository commentRepository;
 
-    public ServiceComments(CommentsRepository commentsRepository) {
-        this.commentsRepository = commentsRepository;
+    public ServiceComment(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
     }
 
-    
+    public Comment save(Comment comment){
+        return this.commentRepository.save(comment);
+    }
 
+    public Optional<Comment> findById(UUID uuid){
+        return this.commentRepository.findById(uuid);
+    }
 
+    public Page<Comment>  findAll(PageRequest pageAble){
+        return this.commentRepository.findAll(pageAble);
+    }
 
-
+    public void deleteById(UUID uuid){
+        this.commentRepository.deleteById(uuid);
+    }
 }
