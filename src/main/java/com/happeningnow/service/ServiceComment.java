@@ -25,7 +25,7 @@ public class ServiceComment {
         return this.commentRepository.findById(uuid);
     }
 
-    public Page<Comment>  findAll(PageRequest pageAble){
+    public Page<Comment> listComment(PageRequest pageAble){
         return this.commentRepository.findAll(pageAble);
     }
 
