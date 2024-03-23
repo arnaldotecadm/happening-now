@@ -1,4 +1,4 @@
-package com.happeningnow.service.factory;
+package com.happeningnow.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,11 +9,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public abstract class ServiceFactory<T, R extends JpaRepository<T, UUID>>{
+public abstract class ServiceAbstract<T, R extends JpaRepository<T, UUID>>{
 
     protected final R repository;
 
-    public ServiceFactory(R repository) {
+    public ServiceAbstract(R repository) {
         this.repository = repository;
     }
 
