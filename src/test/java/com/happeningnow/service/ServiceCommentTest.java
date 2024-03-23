@@ -67,7 +67,7 @@ public class ServiceCommentTest {
         serviceComment.save(comment);
 
         Page<Comment>listOfComment =
-                serviceComment.listComment(PageRequest.of(0,50, Sort.Direction.ASC, "Title"));
+                serviceComment.list(PageRequest.of(0,50, Sort.Direction.ASC, "Title"));
 
                 Assertions.assertFalse(listOfComment.getContent().isEmpty());
         Assertions.assertTrue(listOfComment.stream().anyMatch(l -> l.getTitle().equals(comment.getTitle())));
@@ -79,14 +79,14 @@ public class ServiceCommentTest {
         serviceComment.save(comment);
 
         Page<Comment>listOfComment =
-                serviceComment.listComment(PageRequest.of(0,50, Sort.Direction.ASC, "Title"));
+                serviceComment.list(PageRequest.of(0,50, Sort.Direction.ASC, "Title"));
 
                 Assertions.assertFalse(listOfComment.getContent().isEmpty());
 
                 serviceComment.deleteById(comment.getId());
 
         listOfComment =
-                serviceComment.listComment(PageRequest.of(0,50, Sort.Direction.ASC,"Title"));
+                serviceComment.list(PageRequest.of(0,50, Sort.Direction.ASC,"Title"));
 
                 Assertions.assertTrue(listOfComment.getContent().isEmpty());
     }
