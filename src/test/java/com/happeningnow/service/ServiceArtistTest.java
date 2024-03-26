@@ -64,7 +64,7 @@ public class ServiceArtistTest {
         serviceArtist.save(artist);
 
         Page<Artist>listOfArtist =
-                serviceArtist.listArtist(PageRequest.of(0, 50, Sort.Direction.ASC, "Name"));
+                serviceArtist.list(PageRequest.of(0, 50, Sort.Direction.ASC, "Name"));
 
         Assertions.assertFalse(listOfArtist.getContent().isEmpty());
         Assertions.assertTrue(listOfArtist.stream().anyMatch(l -> l.getName().equals(artist.getName())));
@@ -76,14 +76,14 @@ public class ServiceArtistTest {
         serviceArtist.save(artist);
 
         Page<Artist>listOfArtist =
-                serviceArtist.listArtist(PageRequest.of(0,50, Sort.Direction.ASC, "name"));
+                serviceArtist.list(PageRequest.of(0,50, Sort.Direction.ASC, "name"));
 
         Assertions.assertFalse(listOfArtist.getContent().isEmpty());
 
         serviceArtist.deleteById(artist.getId());
 
         listOfArtist =
-                serviceArtist.listArtist(PageRequest.of(0,50, Sort.Direction.ASC, "name"));
+                serviceArtist.list(PageRequest.of(0,50, Sort.Direction.ASC, "name"));
 
         Assertions.assertTrue(listOfArtist.getContent().isEmpty());
     }

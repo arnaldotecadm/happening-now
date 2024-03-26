@@ -67,7 +67,7 @@ class ServiceOrganizerTest {
         serviceOrganizer.save(organizer);
 
         Page<Organizer>listOfOrganizer =
-                    serviceOrganizer.listOrganizer(PageRequest.of(0,50, Sort.Direction.ASC, "name"));
+                    serviceOrganizer.list(PageRequest.of(0,50, Sort.Direction.ASC, "name"));
 
         Assertions.assertFalse(listOfOrganizer.getContent().isEmpty());
         Assertions.assertTrue(listOfOrganizer.stream().anyMatch(l -> l.getName().equals(organizer.getName())));
@@ -80,14 +80,14 @@ class ServiceOrganizerTest {
         serviceOrganizer.save(organizer);
 
         Page<Organizer>listOfOrganizer =
-                serviceOrganizer.listOrganizer(PageRequest.of(0,50, Sort.Direction.ASC,"name"));
+                serviceOrganizer.list(PageRequest.of(0,50, Sort.Direction.ASC,"name"));
 
         Assertions.assertFalse(listOfOrganizer.getContent().isEmpty());
 
         serviceOrganizer.deleteById(organizer.getId());
 
         listOfOrganizer =
-                serviceOrganizer.listOrganizer(PageRequest.of(0,50, Sort.Direction.ASC,"name"));
+                serviceOrganizer.list(PageRequest.of(0,50, Sort.Direction.ASC,"name"));
 
         Assertions.assertTrue(listOfOrganizer.getContent().isEmpty());
     }
