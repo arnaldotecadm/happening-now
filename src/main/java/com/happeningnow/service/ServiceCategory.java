@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServiceCategory extends ServiceAbstract<Category, CategoryRepository> {
 
-    public ServiceCategory(CategoryRepository repository) {
-        super(repository);
+    public ServiceCategory(CategoryRepository categoryRepository) {
+        super(categoryRepository);
     }
 }
