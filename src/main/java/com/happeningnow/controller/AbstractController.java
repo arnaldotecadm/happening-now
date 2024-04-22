@@ -1,2 +1,4 @@
-package com.happeningnow.controller;public class AbstractController {
+package com.happeningnow.controller;
+
+public class AbstractController {
 }
