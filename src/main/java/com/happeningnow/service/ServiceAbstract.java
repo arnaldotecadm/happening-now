@@ -32,5 +32,4 @@ public abstract class ServiceAbstract<T, R extends JpaRepository<T, UUID>>{
     public void deleteById(UUID uuid){
         repository.deleteById(uuid);
     }
-
 }
