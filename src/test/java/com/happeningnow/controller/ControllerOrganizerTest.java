@@ -3,14 +3,21 @@ package com.happeningnow.controller;
 import com.happeningnow.model.Organizer;
 import com.happeningnow.repository.OrganizerRepository;
 import com.happeningnow.service.ServiceOrganizer;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 import java.util.Collections;
@@ -53,7 +60,7 @@ public class ControllerOrganizerTest {
 
         when(serviceOrganizer.save(any(Organizer.class))).thenReturn(organizer);
 
-        webTestClient.post().uri("/happening-now/save-organizer")
+        webTestClient.post().uri("/organizer/save")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(organizer), Organizer.class)
                 .exchange()
@@ -72,7 +79,7 @@ public class ControllerOrganizerTest {
 
         when(serviceOrganizer.findById(id)).thenReturn(Optional.of(organizer));
 
-        webTestClient.get().uri("/happening-now/{id}", id)
+        webTestClient.get().uri("/organizer/{id}", id)
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody()
@@ -87,7 +94,7 @@ public class ControllerOrganizerTest {
 
         when(serviceOrganizer.findById(id)).thenReturn(Optional.of(organizer));
 
-        webTestClient.get().uri("/happening-now/{id}", id)
+        webTestClient.get().uri("/organizer/{id}", id)
                 .exchange()
                 .expectStatus().isNotFound();
     }
@@ -102,7 +109,7 @@ public class ControllerOrganizerTest {
         when(serviceOrganizer.list(any(PageRequest.class))).thenReturn(page);
 
         webTestClient.get().uri(uriBuilder ->
-                uriBuilder.path("/happening-now/organizers")
+                uriBuilder.path("/organizer/organizers")
                         .queryParam("page", 0)
                         .queryParam("size", 10)
                         .build())
@@ -119,9 +126,9 @@ public class ControllerOrganizerTest {
         UUID id = organizer.getId();
 
         when(serviceOrganizer.findById(id)).thenReturn(Optional.of(organizer));
-        doNothing().when(serviceOrganizer).deleteById(id);
+        doNothing().when(organizerRepository).deleteById(id);
 
-        webTestClient.delete().uri("/happening-now/{id}", id)
+        webTestClient.delete().uri("/organizer/{id}", id)
                 .exchange()
                 .expectStatus().isNoContent();
     }
@@ -133,7 +140,7 @@ public class ControllerOrganizerTest {
 
         when(serviceOrganizer.findById(id)).thenReturn(Optional.of(organizer));
 
-        webTestClient.delete().uri("/happening-now/{id}", id)
+        webTestClient.delete().uri("/organizer/{id}", id)
                 .exchange()
                 .expectStatus().isNotFound();
     }
