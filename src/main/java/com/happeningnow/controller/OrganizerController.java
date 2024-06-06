@@ -28,13 +28,6 @@ public class OrganizerController {
         return new ResponseEntity<>(saveOrganizer,HttpStatus.CREATED);
     }
 
-//    @GetMapping("/{id}")
-//    @ResponseStatus(HttpStatus.OK)
-//    public ResponseEntity<Optional<Organizer>> findById(@PathVariable UUID id) {
-//        Optional<Organizer> organizer = serviceOrganizer.findById(id);
-//        return ResponseEntity.ok(organizer);
-//    }
-
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Organizer> findById(@PathVariable UUID id) {
