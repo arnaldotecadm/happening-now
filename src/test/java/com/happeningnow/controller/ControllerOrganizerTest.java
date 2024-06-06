@@ -3,10 +3,7 @@ package com.happeningnow.controller;
 import com.happeningnow.model.Organizer;
 import com.happeningnow.repository.OrganizerRepository;
 import com.happeningnow.util.CustomPageImpl;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -40,24 +37,18 @@ public class ControllerOrganizerTest {
 
     private Organizer organizer2;
 
-    @BeforeEach
-    public void createOrganizer() {
-        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
-        organizer1 = new Organizer(
-                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
-        );
-
-        UUID id2 = UUID.fromString("a0d8b613-cde9-417d-9c45-b268cc295e81");
-        organizer2 = new Organizer(
-                id2, "Arnaldo", "Dev", "Porto", Collections.emptyList()
-        );
-
-
+    @AfterEach
+    public void setUp(){
+        this.organizerRepository.deleteAll();
     }
 
     @Test
     @DisplayName("This controller method should save an organizer")
     public void save() {
+        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
+        organizer1 = new Organizer(
+                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
+        );
 
         HttpEntity<Organizer> saveRequest = new HttpEntity<>(organizer1);
         ResponseEntity<Organizer> responseEntity = resTemplate.exchange("/organizer/save",
@@ -75,6 +66,11 @@ public class ControllerOrganizerTest {
     @Test
     @DisplayName("This controller method should find an organizer by id")
     public void findById() {
+        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
+        organizer1 = new Organizer(
+                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
+        );
+
         organizerRepository.save(organizer1);
 
         ResponseEntity<Organizer> responseEntity = resTemplate.exchange("/organizer/{id}",
@@ -96,6 +92,16 @@ public class ControllerOrganizerTest {
     @Test
     @DisplayName("This controller method should find all organizers")
     public void listOrganizers() {
+        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
+        organizer1 = new Organizer(
+                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
+        );
+
+        UUID id2 = UUID.fromString("a0d8b613-cde9-417d-9c45-b268cc295e81");
+        organizer2 = new Organizer(
+                id2, "Arnaldo", "Dev", "Porto", Collections.emptyList()
+        );
+
         organizerRepository.save(organizer1);
         organizerRepository.save(organizer2);
 
@@ -121,6 +127,11 @@ public class ControllerOrganizerTest {
     @Test
     @DisplayName("This controller method should delete an organizer by id")
     public void deleteOrganizerById() {
+        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
+        organizer1 = new Organizer(
+                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
+        );
+
         organizerRepository.save(organizer1);
 
         ResponseEntity<Void> responseEntity = resTemplate.exchange(

@@ -28,12 +28,23 @@ public class OrganizerController {
         return new ResponseEntity<>(saveOrganizer,HttpStatus.CREATED);
     }
 
+//    @GetMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public ResponseEntity<Optional<Organizer>> findById(@PathVariable UUID id) {
+//        Optional<Organizer> organizer = serviceOrganizer.findById(id);
+//        return ResponseEntity.ok(organizer);
+//    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Optional<Organizer>> findById(@PathVariable UUID id) {
+    public ResponseEntity<Organizer> findById(@PathVariable UUID id) {
         Optional<Organizer> organizer = serviceOrganizer.findById(id);
-        return ResponseEntity.ok(organizer);
+        if (organizer.isEmpty()) {
+            throw new RuntimeException("Organizer not found with id: " + id);
+        }
+        return ResponseEntity.ok(organizer.get());
     }
+
 
     @GetMapping("/organizers")
     public ResponseEntity<Page<Organizer>> findAll(Pageable pageAble){
