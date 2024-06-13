@@ -54,7 +54,7 @@ public class ServiceCategoryTest {
 
         var result = serviceCategory.findById(category.getId());
 
-        Assertions.assertEquals(result.get().getId(), category.getId());
+        Assertions.assertEquals(result.getId(), category.getId());
     }
 
     @Test

@@ -31,11 +31,8 @@ public class OrganizerController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Organizer> findById(@PathVariable UUID id) {
-        Optional<Organizer> organizer = serviceOrganizer.findById(id);
-        if (organizer.isEmpty()) {
-            throw new RuntimeException("Organizer not found with id: " + id);
-        }
-        return ResponseEntity.ok(organizer.get());
+        Organizer organizer = serviceOrganizer.findById(id);
+        return ResponseEntity.ok(organizer);
     }
 
 

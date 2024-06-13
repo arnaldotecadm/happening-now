@@ -58,7 +58,7 @@ public class ServiceLocationTest {
 
         var result = serviceLocation.findById(location.getId());
 
-        Assertions.assertEquals(result.get().getId(), location.getId());
+        Assertions.assertEquals(result.getId(), location.getId());
     }
 
     @Test

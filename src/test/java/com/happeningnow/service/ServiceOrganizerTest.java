@@ -57,7 +57,7 @@ class ServiceOrganizerTest {
 
         var result = serviceOrganizer.findById(organizer.getId());
 
-        Assertions.assertEquals(result.get().getId(), organizer.getId());
+        Assertions.assertEquals(result.getId(), organizer.getId());
     }
 
     @Test
