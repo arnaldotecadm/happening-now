@@ -16,6 +16,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -61,6 +62,9 @@ public class ControllerOrganizerTest {
         Assertions.assertEquals("Alex Sander", responseEntity.getBody().getName());
         Assertions.assertEquals("Developer", responseEntity.getBody().getDescription());
         Assertions.assertEquals("Portugal", responseEntity.getBody().getAddress());
+
+        Optional<Organizer> responseId = this.organizerRepository.findById(responseEntity.getBody().getId());
+        Assertions.assertTrue(responseId.isPresent());
     }
 
     @Test
@@ -142,5 +146,12 @@ public class ControllerOrganizerTest {
                 organizer1.getId());
 
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+
+        var resp = responseEntity.hasBody();
+        Assertions.assertFalse(resp);
+
+        Optional<Organizer> responseId = this.organizerRepository.findById(id1);
+        Assertions.assertFalse(responseId.isPresent());
+        Assertions.assertEquals(responseId,Optional.empty());
     }
 }
