@@ -55,7 +55,7 @@ public class ServiceArtistTest {
 
         var result = serviceArtist.findById(artist.getId());
 
-        Assertions.assertEquals(result.get().getId(), artist.getId());
+        Assertions.assertEquals(result.getId(), artist.getId());
     }
 
     @Test

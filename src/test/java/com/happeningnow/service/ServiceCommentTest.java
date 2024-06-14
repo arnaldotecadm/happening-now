@@ -58,7 +58,7 @@ public class ServiceCommentTest {
 
         var result = serviceComment.findById(comment.getId());
 
-        Assertions.assertEquals(result.get().getId(), comment.getId());
+        Assertions.assertEquals(result.getId(), comment.getId());
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.happeningnow.service;
 
+import com.happeningnow.configurations.RecordNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,8 +22,9 @@ public abstract class ServiceAbstract<T, R extends JpaRepository<T, UUID>>{
         return repository.save(entity);
     }
 
-    public Optional<T> findById(UUID uuid){
-        return repository.findById(uuid);
+    public T findById(UUID uuid){
+        return repository.findById(uuid)
+                .orElseThrow(() -> new RecordNotFoundException("Record not found"));
     }
 
     public Page<T> list(PageRequest pageAble){
@@ -32,5 +34,4 @@ public abstract class ServiceAbstract<T, R extends JpaRepository<T, UUID>>{
     public void deleteById(UUID uuid){
         repository.deleteById(uuid);
     }
-
 }
