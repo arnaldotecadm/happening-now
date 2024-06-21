@@ -1,7 +1,6 @@
 package com.happeningnow.controller;
 
-import com.happeningnow.service.ServiceAbstract;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.happeningnow.service.IBaseService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -9,13 +8,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
-
 @RestController
-public abstract class AbstractController<T, S extends ServiceAbstract<T, ?>> {
+public abstract class AbstractController<T, P>{
 
-    @Autowired
-    protected S service;
+    private IBaseService<T, P> service;
+
+    public AbstractController(IBaseService service) {
+        this.service = service;
+    }
+
 
     @PostMapping("/save")
     public ResponseEntity<T> save(@RequestBody T entity){
@@ -25,7 +26,7 @@ public abstract class AbstractController<T, S extends ServiceAbstract<T, ?>> {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<T> findByid(@PathVariable UUID id){
+    public ResponseEntity<T> findByid(@PathVariable P id){
         T entity = service.findById(id);
         return ResponseEntity.ok(entity);
     }
@@ -40,7 +41,7 @@ public abstract class AbstractController<T, S extends ServiceAbstract<T, ?>> {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable UUID id){
+    public void delete(@PathVariable P id){
         service.deleteById(id);
     }
 }

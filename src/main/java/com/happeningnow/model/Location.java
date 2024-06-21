@@ -9,13 +9,12 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 
 @Entity
 @Table(name = "location")
-public class Location {
-    @Id
-    @UuidGenerator
-    private UUID id;
+public class Location extends BaseEntity{
+
     @Column(nullable = false)
     private String name;
     private String description;
@@ -23,4 +22,12 @@ public class Location {
     private String adrress;
     @OneToMany
     private List<Event> eventList;
+
+    public Location(UUID id, String name, String description, String adrress, List<Event> eventList) {
+        super(id);
+        this.name = name;
+        this.description = description;
+        this.adrress = adrress;
+        this.eventList = eventList;
+    }
 }

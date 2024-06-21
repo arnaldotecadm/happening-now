@@ -5,11 +5,13 @@ import com.happeningnow.service.ServiceLocation;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/location")
-public class LocationController extends AbstractController<Location, ServiceLocation> {
+public class LocationController extends AbstractController<Location, UUID> {
 
     public LocationController(ServiceLocation service) {
-        this.service = service;
+        super(service);
     }
 }

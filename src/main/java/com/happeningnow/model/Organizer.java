@@ -13,10 +13,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "organizer")
 
-public class Organizer {
-    @Id
-    @UuidGenerator
-    private UUID id;
+public class Organizer extends BaseEntity{
+
     @Column(nullable = false)
     private String name;
     private String description;
@@ -24,4 +22,12 @@ public class Organizer {
     private String address;
     @ManyToMany(mappedBy = "organizerList")
     private List<Event> eventList;
+
+    public Organizer(UUID id, String name, String description, String address, List<Event> eventList) {
+        super(id);
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.eventList = eventList;
+    }
 }
