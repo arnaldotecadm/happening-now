@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Collections;
-import java.util.UUID;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -27,7 +26,6 @@ public class ServiceLocationTest {
 
     @BeforeEach
     public void creatLocation(){
-        UUID id = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         location = new Location("Event", "Technology event", "Portugal", Collections.emptyList());
     }
 

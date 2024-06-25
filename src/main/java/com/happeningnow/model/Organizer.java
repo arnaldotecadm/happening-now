@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "organizer")
-
 public class Organizer extends BaseEntity{
 
     @Column(nullable = false)

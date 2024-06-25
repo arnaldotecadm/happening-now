@@ -12,10 +12,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "category")
-public class Category {
-    @Id
-    @UuidGenerator
-    private UUID id;
+public class Category extends BaseEntity{
+
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)

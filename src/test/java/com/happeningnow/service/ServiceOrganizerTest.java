@@ -9,8 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
+
 import java.util.Collections;
-import java.util.UUID;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -26,7 +26,6 @@ class ServiceOrganizerTest {
 
     @BeforeEach
     public void createOrganizer(){
-        UUID id = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer = new Organizer(
                 "Alex Sander","Developer","Portugal", Collections.emptyList()
         );
