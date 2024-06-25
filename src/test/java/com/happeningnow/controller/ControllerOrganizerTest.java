@@ -48,11 +48,11 @@ public class ControllerOrganizerTest {
     public void save() {
         UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer1 = new Organizer(
-                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
+                "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
 
         HttpEntity<Organizer> saveRequest = new HttpEntity<>(organizer1);
-        ResponseEntity<Organizer> responseEntity = resTemplate.exchange("/organizer/save",
+        ResponseEntity<Organizer> responseEntity = resTemplate.exchange("/organizer",
                 HttpMethod.POST,
                 saveRequest,
                 Organizer.class);
@@ -72,7 +72,7 @@ public class ControllerOrganizerTest {
     public void findById() {
         UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer1 = new Organizer(
-                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
+                "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
 
         organizerRepository.save(organizer1);
@@ -98,19 +98,19 @@ public class ControllerOrganizerTest {
     public void listOrganizers() {
         UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer1 = new Organizer(
-                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
+                "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
 
         UUID id2 = UUID.fromString("a0d8b613-cde9-417d-9c45-b268cc295e81");
         organizer2 = new Organizer(
-                id2, "Arnaldo", "Dev", "Porto", Collections.emptyList()
+                "Arnaldo", "Dev", "Porto", Collections.emptyList()
         );
 
         organizerRepository.save(organizer1);
         organizerRepository.save(organizer2);
 
         ResponseEntity<CustomPageImpl<Organizer>> responseEntity = resTemplate.exchange(
-                "/organizer/list",
+                "/organizer",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<>() {});
@@ -133,7 +133,7 @@ public class ControllerOrganizerTest {
     public void deleteOrganizerById() {
         UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer1 = new Organizer(
-                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
+                "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
 
         organizerRepository.save(organizer1);

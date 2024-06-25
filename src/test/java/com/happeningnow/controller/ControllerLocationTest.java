@@ -49,11 +49,11 @@ public class ControllerLocationTest {
     public void save() {
         UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         location1 = new Location(
-                id1, "Sander", "Dev", "Brasil", Collections.emptyList()
+                "Sander", "Dev", "Brasil", Collections.emptyList()
         );
 
         HttpEntity<Location> saveRequest = new HttpEntity<>(location1);
-        ResponseEntity<Location> responseEntity = resTemplate.exchange("/location/save",
+        ResponseEntity<Location> responseEntity = resTemplate.exchange("/location",
                 HttpMethod.POST,
                 saveRequest,
                 Location.class);
@@ -73,7 +73,7 @@ public class ControllerLocationTest {
     public void findById() {
         UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         location1 = new Location(
-                id1, "Sander", "Dev", "Portugal", Collections.emptyList()
+                "Sander", "Dev", "Portugal", Collections.emptyList()
         );
 
         locationRepository.save(location1);
@@ -99,19 +99,19 @@ public class ControllerLocationTest {
     public void listOrganizers() {
         UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         location1 = new Location(
-                id1, "Sander", "Developer", "Portugal", Collections.emptyList()
+                "Sander", "Developer", "Portugal", Collections.emptyList()
         );
 
         UUID id2 = UUID.fromString("a0d8b613-cde9-417d-9c45-b268cc295e81");
         location2 = new Location(
-                id2, "Arnaldo", "Dev", "Porto", Collections.emptyList()
+                "Arnaldo", "Dev", "Porto", Collections.emptyList()
         );
 
         locationRepository.save(location1);
         locationRepository.save(location2);
 
         ResponseEntity<CustomPageImpl<Location>> responseEntity = resTemplate.exchange(
-                "/location/list",
+                "/location",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<>() {});
@@ -133,7 +133,7 @@ public class ControllerLocationTest {
     public void deleteOrganizerById() {
         UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         location1 = new Location(
-                id1, "Alex Sander", "Developer", "Portugal", Collections.emptyList()
+                "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
 
         locationRepository.save(location1);

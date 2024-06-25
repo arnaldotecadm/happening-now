@@ -23,11 +23,4 @@ public class Location extends BaseEntity{
     @OneToMany
     private List<Event> eventList;
 
-    public Location(UUID id, String name, String description, String adrress, List<Event> eventList) {
-        super(id);
-        this.name = name;
-        this.description = description;
-        this.adrress = adrress;
-        this.eventList = eventList;
-    }
 }

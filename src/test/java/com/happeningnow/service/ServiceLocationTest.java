@@ -2,7 +2,6 @@ package com.happeningnow.service;
 
 import com.happeningnow.model.Location;
 import com.happeningnow.repository.LocationRepository;
-import org.junit.Assert;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
+
 import java.util.Collections;
 import java.util.UUID;
 
@@ -28,7 +28,7 @@ public class ServiceLocationTest {
     @BeforeEach
     public void creatLocation(){
         UUID id = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
-        location = new Location(id, "Event", "Technology event", "Portugal", Collections.emptyList());
+        location = new Location("Event", "Technology event", "Portugal", Collections.emptyList());
     }
 
     @AfterEach

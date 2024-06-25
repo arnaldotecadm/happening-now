@@ -18,7 +18,7 @@ public abstract class AbstractController<T, P>{
     }
 
 
-    @PostMapping("/save")
+    @PostMapping()
     public ResponseEntity<T> save(@RequestBody T entity){
         T save = service.save(entity);
         return new ResponseEntity<>(save, HttpStatus.CREATED);
@@ -31,7 +31,7 @@ public abstract class AbstractController<T, P>{
         return ResponseEntity.ok(entity);
     }
 
-    @GetMapping("/list")
+    @GetMapping()
     public ResponseEntity<Page<T>> findAll(Pageable pageAble){
         PageRequest pageRequest = PageRequest.of(pageAble.getPageNumber(),
                 pageAble.getPageSize());

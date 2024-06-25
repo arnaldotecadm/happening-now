@@ -22,12 +22,4 @@ public class Organizer extends BaseEntity{
     private String address;
     @ManyToMany(mappedBy = "organizerList")
     private List<Event> eventList;
-
-    public Organizer(UUID id, String name, String description, String address, List<Event> eventList) {
-        super(id);
-        this.name = name;
-        this.description = description;
-        this.address = address;
-        this.eventList = eventList;
-    }
 }
