@@ -8,6 +8,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 
 @Entity
 @Table(name = "location")
@@ -20,5 +21,4 @@ public class Location extends BaseEntity{
     private String address;
     @OneToMany
     private List<Event> eventList;
-
 }
