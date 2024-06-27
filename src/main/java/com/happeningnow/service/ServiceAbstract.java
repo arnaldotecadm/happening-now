@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public abstract class ServiceAbstract<T, R extends JpaRepository<T, UUID>>{
+public abstract class ServiceAbstract<T, R extends JpaRepository<T, UUID>> implements IBaseService<T, UUID>{
 
     protected final R repository;
 

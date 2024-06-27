@@ -13,10 +13,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "organizer")
 
-public class Organizer {
-    @Id
-    @UuidGenerator
-    private UUID id;
+public class Organizer extends BaseEntity{
+
     @Column(nullable = false)
     private String name;
     private String description;

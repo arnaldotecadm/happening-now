@@ -28,7 +28,7 @@ class ServiceOrganizerTest {
     public void createOrganizer(){
         UUID id = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer = new Organizer(
-                id,"Alex Sander","Developer","Portugal", Collections.emptyList()
+                "Alex Sander","Developer","Portugal", Collections.emptyList()
         );
     }
 
