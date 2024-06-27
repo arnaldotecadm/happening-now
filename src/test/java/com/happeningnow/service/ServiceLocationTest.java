@@ -46,7 +46,7 @@ public class ServiceLocationTest {
 
         Assertions.assertFalse(location.getDescription().isEmpty(), "Description location test");
 
-        Assertions.assertFalse(location.getAdrress().isEmpty(),"Adress location test");
+        Assertions.assertFalse(location.getAddress().isEmpty(),"Adress location test");
     }
 
     @Test

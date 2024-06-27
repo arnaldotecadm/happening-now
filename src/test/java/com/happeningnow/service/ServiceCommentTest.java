@@ -48,7 +48,7 @@ public class ServiceCommentTest {
         Assertions.assertFalse(comment.getTitle().isEmpty(), "Title test");
 
         Assertions.assertEquals(0, comment.getLikes(), "Like test");
-        Assertions.assertEquals(0, comment.getDeslikes(), "Deslike test");
+        Assertions.assertEquals(0, comment.getDislikes(), "Dislike test");
     }
 
     @Test

@@ -60,7 +60,7 @@ public class ControllerLocationTest {
         assertThat(responseEntity.getBody()).isNotNull();
         Assertions.assertEquals("Sander", responseEntity.getBody().getName());
         Assertions.assertEquals("Dev", responseEntity.getBody().getDescription());
-        Assertions.assertEquals("Brasil", responseEntity.getBody().getAdrress());
+        Assertions.assertEquals("Brasil", responseEntity.getBody().getAddress());
 
         Optional<Location> responseId = this.locationRepository.findById(responseEntity.getBody().getId());
         Assertions.assertTrue(responseId.isPresent());
@@ -88,7 +88,7 @@ public class ControllerLocationTest {
         Assertions.assertEquals(location1.getId(), retrievedOrganizer.getId());
         Assertions.assertEquals("Sander", retrievedOrganizer.getName());
         Assertions.assertEquals("Dev", retrievedOrganizer.getDescription());
-        Assertions.assertEquals("Portugal", retrievedOrganizer.getAdrress());
+        Assertions.assertEquals("Portugal", retrievedOrganizer.getAddress());
     }
 
     @Test
@@ -118,7 +118,7 @@ public class ControllerLocationTest {
 
         assertThat(locations).isNotEmpty();
 
-        assertThat(locations).extracting("name", "description", "adrress")
+        assertThat(locations).extracting("name", "description", "address")
                 .contains(tuple("Sander", "Developer", "Portugal"),
                         tuple("Arnaldo", "Dev", "Porto"));
     }
