@@ -21,5 +21,6 @@ public class Comment {
     @Column(name = "user_creation")
     private UUID userCreation;
     private int likes;
-    private int deslikes;
+    private int dislikes;
+
 }

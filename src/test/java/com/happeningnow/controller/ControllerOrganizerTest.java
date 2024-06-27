@@ -3,7 +3,10 @@ package com.happeningnow.controller;
 import com.happeningnow.model.Organizer;
 import com.happeningnow.repository.OrganizerRepository;
 import com.happeningnow.util.CustomPageImpl;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -17,7 +20,6 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
@@ -46,7 +48,6 @@ public class ControllerOrganizerTest {
     @Test
     @DisplayName("This controller method should save an organizer")
     public void save() {
-        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer1 = new Organizer(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
@@ -70,7 +71,6 @@ public class ControllerOrganizerTest {
     @Test
     @DisplayName("This controller method should find an organizer by id")
     public void findById() {
-        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer1 = new Organizer(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
@@ -96,12 +96,10 @@ public class ControllerOrganizerTest {
     @Test
     @DisplayName("This controller method should find all organizers")
     public void listOrganizers() {
-        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer1 = new Organizer(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
 
-        UUID id2 = UUID.fromString("a0d8b613-cde9-417d-9c45-b268cc295e81");
         organizer2 = new Organizer(
                 "Arnaldo", "Dev", "Porto", Collections.emptyList()
         );
@@ -131,7 +129,6 @@ public class ControllerOrganizerTest {
     @Test
     @DisplayName("This controller method should delete an organizer by id")
     public void deleteOrganizerById() {
-        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         organizer1 = new Organizer(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
@@ -150,7 +147,7 @@ public class ControllerOrganizerTest {
         var resp = responseEntity.hasBody();
         Assertions.assertFalse(resp);
 
-        Optional<Organizer> responseId = this.organizerRepository.findById(id1);
+        Optional<Organizer> responseId = this.organizerRepository.findById(organizer1.getId());
         Assertions.assertFalse(responseId.isPresent());
         Assertions.assertEquals(responseId,Optional.empty());
     }

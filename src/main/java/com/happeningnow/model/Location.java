@@ -2,9 +2,8 @@ package com.happeningnow.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.UuidGenerator;
+
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -19,8 +18,7 @@ public class Location extends BaseEntity{
     private String name;
     private String description;
     @Column(nullable = false)
-    private String adrress;
+    private String address;
     @OneToMany
     private List<Event> eventList;
-
 }

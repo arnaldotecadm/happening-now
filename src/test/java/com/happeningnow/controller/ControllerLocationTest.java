@@ -20,7 +20,6 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
@@ -45,9 +44,8 @@ public class ControllerLocationTest {
     }
 
     @Test
-    @DisplayName("This controller method should save an organizer")
+    @DisplayName("This controller method should save an location")
     public void save() {
-        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         location1 = new Location(
                 "Sander", "Dev", "Brasil", Collections.emptyList()
         );
@@ -62,16 +60,15 @@ public class ControllerLocationTest {
         assertThat(responseEntity.getBody()).isNotNull();
         Assertions.assertEquals("Sander", responseEntity.getBody().getName());
         Assertions.assertEquals("Dev", responseEntity.getBody().getDescription());
-        Assertions.assertEquals("Brasil", responseEntity.getBody().getAdrress());
+        Assertions.assertEquals("Brasil", responseEntity.getBody().getAddress());
 
         Optional<Location> responseId = this.locationRepository.findById(responseEntity.getBody().getId());
         Assertions.assertTrue(responseId.isPresent());
     }
 
     @Test
-    @DisplayName("This controller method should find an organizer by id")
+    @DisplayName("This controller method should find an location by id")
     public void findById() {
-        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         location1 = new Location(
                 "Sander", "Dev", "Portugal", Collections.emptyList()
         );
@@ -91,18 +88,16 @@ public class ControllerLocationTest {
         Assertions.assertEquals(location1.getId(), retrievedOrganizer.getId());
         Assertions.assertEquals("Sander", retrievedOrganizer.getName());
         Assertions.assertEquals("Dev", retrievedOrganizer.getDescription());
-        Assertions.assertEquals("Portugal", retrievedOrganizer.getAdrress());
+        Assertions.assertEquals("Portugal", retrievedOrganizer.getAddress());
     }
 
     @Test
-    @DisplayName("This controller method should find all organizers")
-    public void listOrganizers() {
-        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
+    @DisplayName("This controller method should find all locations")
+    public void listLocations() {
         location1 = new Location(
                 "Sander", "Developer", "Portugal", Collections.emptyList()
         );
 
-        UUID id2 = UUID.fromString("a0d8b613-cde9-417d-9c45-b268cc295e81");
         location2 = new Location(
                 "Arnaldo", "Dev", "Porto", Collections.emptyList()
         );
@@ -123,15 +118,14 @@ public class ControllerLocationTest {
 
         assertThat(locations).isNotEmpty();
 
-        assertThat(locations).extracting("name", "description", "adrress")
+        assertThat(locations).extracting("name", "description", "address")
                 .contains(tuple("Sander", "Developer", "Portugal"),
                         tuple("Arnaldo", "Dev", "Porto"));
     }
 
     @Test
     @DisplayName("This controller method should delete an organizer by id")
-    public void deleteOrganizerById() {
-        UUID id1 = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
+    public void deleteLocationById() {
         location1 = new Location(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
@@ -150,7 +144,7 @@ public class ControllerLocationTest {
         var resp = responseEntity.hasBody();
         Assertions.assertFalse(resp);
 
-        Optional<Location> responseId = this.locationRepository.findById(id1);
+        Optional<Location> responseId = this.locationRepository.findById(location1.getId());
         Assertions.assertFalse(responseId.isPresent());
         Assertions.assertEquals(responseId,Optional.empty());
     }

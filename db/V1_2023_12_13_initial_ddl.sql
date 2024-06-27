@@ -33,7 +33,7 @@ CREATE TABLE public.category (
 CREATE TABLE public."comment" (
 	id uuid NOT NULL,
 	"comment" varchar(255) NOT NULL,
-	deslikes int4 NOT NULL,
+	dislikes int4 NOT NULL,
 	likes int4 NOT NULL,
 	title varchar(255) NULL,
 	user_creation uuid NULL,
@@ -113,3 +113,16 @@ CREATE TABLE public.event_comment_list (
 ALTER TABLE public.event_comment_list ADD CONSTRAINT fkf2pm3b7pg5o5qxyvgpffrfymy FOREIGN KEY (comment_list_id) REFERENCES public."comment"(id);
 ALTER TABLE public.event_comment_list ADD CONSTRAINT fknfnvgig45g0tsc7bt3f7jv1xx FOREIGN KEY (event_id) REFERENCES public."event"(id);
 
+-- public."location" definition
+
+-- Drop table
+
+-- DROP TABLE public."location";
+
+CREATE TABLE public."location" (
+	id uuid NOT NULL,
+	address varchar(255) NOT NULL,
+	description varchar(255) NULL,
+	"name" varchar(255) NOT NULL,
+	CONSTRAINT location_pkey PRIMARY KEY (id)
+);
