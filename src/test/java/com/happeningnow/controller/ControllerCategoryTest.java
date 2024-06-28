@@ -44,7 +44,7 @@ public class ControllerCategoryTest {
     }
 
     @Test
-    @DisplayName("This controller method should save an category")
+    @DisplayName("This controller method should save a category")
     public void save() {
         category = new Category(
                 "Futebol", "Tag futebol", Collections.emptyList()
@@ -66,7 +66,7 @@ public class ControllerCategoryTest {
     }
 
     @Test
-    @DisplayName("This controller method should find an category by id")
+    @DisplayName("This controller method should find a category by id")
     public void findById() {
         category = new Category(
                 "Futebol", "Tag futebol", Collections.emptyList()
@@ -122,7 +122,7 @@ public class ControllerCategoryTest {
     }
 
     @Test
-    @DisplayName("This controller method should delete an category by id")
+    @DisplayName("This controller method should delete a category by id")
     public void deleteCategoryById() {
         category = new Category(
                 "Futebol", "Tag de futebol", Collections.emptyList()

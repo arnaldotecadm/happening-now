@@ -44,7 +44,7 @@ public class ControllerLocationTest {
     }
 
     @Test
-    @DisplayName("This controller method should save an location")
+    @DisplayName("This controller method should save a location")
     public void save() {
         location1 = new Location(
                 "Sander", "Dev", "Brasil", Collections.emptyList()
@@ -67,7 +67,7 @@ public class ControllerLocationTest {
     }
 
     @Test
-    @DisplayName("This controller method should find an location by id")
+    @DisplayName("This controller method should find a location by id")
     public void findById() {
         location1 = new Location(
                 "Sander", "Dev", "Portugal", Collections.emptyList()
@@ -124,7 +124,7 @@ public class ControllerLocationTest {
     }
 
     @Test
-    @DisplayName("This controller method should delete an organizer by id")
+    @DisplayName("This controller method should delete a organizer by id")
     public void deleteLocationById() {
         location1 = new Location(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()

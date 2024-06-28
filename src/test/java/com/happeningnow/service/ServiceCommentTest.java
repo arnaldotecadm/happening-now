@@ -26,8 +26,7 @@ public class ServiceCommentTest {
 
     @BeforeEach
     public void creatComment(){
-       UUID id = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
-       comment = new Comment(id,"Alex Sander","Are developer", UUID.randomUUID(),0,0);
+       comment = new Comment("Alex Sander","Are developer", UUID.randomUUID(),0,0);
     }
 
     @AfterEach

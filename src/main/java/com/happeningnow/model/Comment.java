@@ -11,10 +11,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "comment")
-public class Comment {
-    @Id
-    @UuidGenerator
-    private UUID id;
+public class Comment extends BaseEntity {
+
     private String title;
     @Column(nullable = false)
     private String comment;
@@ -22,5 +20,4 @@ public class Comment {
     private UUID userCreation;
     private int likes;
     private int dislikes;
-
 }

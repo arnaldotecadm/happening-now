@@ -68,7 +68,7 @@ public class ServiceCategoryTest {
     }
 
     @Test
-    @DisplayName("Mus delete category")
+    @DisplayName("Must delete category")
     public void deleteById(){
         serviceCategory.save(category);
 

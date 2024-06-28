@@ -2,10 +2,7 @@ package com.happeningnow.service;
 
 import com.happeningnow.model.Event;
 import com.happeningnow.repository.EventRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -57,6 +54,7 @@ public class ServiceEventTest {
     }
 
     @Test
+    @DisplayName("Must save a new Event")
     public void save(){
         var result = serviceEvent.save(event);
 
@@ -73,6 +71,7 @@ public class ServiceEventTest {
     }
 
     @Test
+    @DisplayName("Must find event by id")
     public void findById(){
         serviceEvent.save(event);
 
@@ -82,6 +81,7 @@ public class ServiceEventTest {
     }
 
     @Test
+    @DisplayName("Must find all events")
     public void eventList(){
         serviceEvent.save(event);
 
@@ -93,6 +93,7 @@ public class ServiceEventTest {
     }
 
     @Test
+    @DisplayName("Must delete an event")
     public void deleteById(){
         serviceEvent.save(event);
 
