@@ -26,7 +26,7 @@ public abstract class AbstractController<T, P>{
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<T> findByid(@PathVariable P id){
+    public ResponseEntity<T> findById(@PathVariable P id){
         T entity = service.findById(id);
         return ResponseEntity.ok(entity);
     }

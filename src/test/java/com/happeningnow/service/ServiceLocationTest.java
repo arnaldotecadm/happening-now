@@ -60,7 +60,7 @@ public class ServiceLocationTest {
     }
 
     @Test
-    @DisplayName("Mus find all locations")
+    @DisplayName("Must find all locations")
     public void locationList(){
         serviceLocation.save(location);
 
