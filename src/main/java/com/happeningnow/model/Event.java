@@ -14,10 +14,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "event")
-public class Event {
-    @Id
-    @UuidGenerator
-    private UUID id;
+public class Event extends BaseEntity{
+
     @Column(nullable = false)
     private String name;
     private String description;
