@@ -12,11 +12,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "artist")
-public class Artist {
-    @Id
-    @UuidGenerator
-    private UUID id;
-    @Column(nullable = false)
+public class Artist extends BaseEntity{
+
     private String name;
     @Column(nullable = false)
     private String description;
