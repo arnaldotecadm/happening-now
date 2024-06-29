@@ -35,14 +35,13 @@ public class ServiceEventTest {
 
     @BeforeEach
     public void creatEventPast(){
-        UUID id = UUID.fromString("a0d3b612-cde9-417d-8c47-b268cc295e80");
         LocalDate startDate = LocalDate.of(2024, Month.MARCH, 18);
         LocalDate endDate = LocalDate.of(2024, Month.MARCH, 20);
         byte[] images = new byte[0];
         boolean status = false;
         boolean payed = false;
 
-        event = new Event(id, "Birthday", "Birthday the Alex Sander", startDate, endDate,"Alex Sander", "Alex Sander", status, payed,
+        event = new Event("Birthday", "Birthday the Alex Sander", startDate, endDate,"Alex Sander", "Alex Sander", status, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(),Collections.emptyList(),Collections.emptyList(), Collections.emptyList()
                 );
 
