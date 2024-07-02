@@ -14,3 +14,7 @@ spring:
     url: ${DB_URL}
     username: ${DB_USER}
     password: ${DB_PASSWORD}
+sonar:
+  host:
+    url: "http://localhost:9000"
+  login: ${happening_token}
