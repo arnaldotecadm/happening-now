@@ -4,16 +4,13 @@ services:
 
   database:
     image: postgres:15.2-alpine
-    container_name: "happening-now_database"
+    container_name: "hn-database"
     ports:
       - "5445:5432"
     restart: always
     env_file: .env
   sonar:
-    image: sonarqube:latest
-    container_name: "happening-now_sonar"
+    image: sonarqube:10.6-community
+    container_name: "hn-sonar"
     ports:
       - "9000:9000"
-
-
-

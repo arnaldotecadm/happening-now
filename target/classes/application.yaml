@@ -16,5 +16,5 @@ spring:
     password: ${DB_PASSWORD}
 sonar:
   host:
-    url: "http://localhost:9000"
-  login: "squ_834516628a3dcd4bf4c93f41130c58a7ef1c18eb"
+    url: ${SONAR_URL}
+  login: ${HAPPENING_TOKEN}
