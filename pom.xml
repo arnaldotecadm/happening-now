@@ -16,7 +16,8 @@
 	<properties>
 		<java.version>17</java.version>
 		<sonar.host.url>${SONAR_URL}</sonar.host.url>
-		<sonar.login>${HAPPENING_TOKEN}</sonar.login>
+		<sonar.login>${HN_USER_NAME}</sonar.login>
+		<sonar.password>${HN_PASSWORD}</sonar.password>
 	</properties>
 
 	<dependencies>
