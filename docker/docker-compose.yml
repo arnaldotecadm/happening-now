@@ -2,9 +2,30 @@ version: '3.8'
 
 services:
 
-  database:
+  hn-database:
     image: postgres:15.2-alpine
+    container_name: "hn-database"
     ports:
-      - "5432:5432"
+      - "5445:5432"
     restart: always
     env_file: .env
+  sonar:
+    image: sonarqube:10.6-community
+    container_name: "hn-sonar"
+    ports:
+      - "9001:9000"
+    healthcheck:
+      test: "curl --fail --silent localhost:9000/api/system/status | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  change-password:
+    image: alpine:latest
+    depends_on:
+      sonar:
+        condition: service_healthy
+    command: >
+      sh -c "apk add --no-cache curl &&
+             curl -u admin:admin -X POST 'http://sonar:9000/api/users/change_password?login=admin&previousPassword=admin&password=my-new-password'"
