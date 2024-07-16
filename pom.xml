@@ -137,6 +137,21 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>9.16.3</version>
+		</dependency>
+
+
+
+
+
+
+
+
+
 	</dependencies>
 
 	<build>
