@@ -14,6 +14,7 @@ import java.util.UUID;
 @Table(name = "artist")
 public class Artist extends BaseEntity{
 
+    @Column(name = "name")
     private String name;
     @Column(nullable = false)
     private String description;
