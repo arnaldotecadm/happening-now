@@ -15,16 +15,17 @@ spring:
     username: ${DB_USER}
     password: ${DB_PASSWORD}
   flyway:
-    clean-disabled: false
+    #clean-disabled: false
     clean-on-validation-error: false
-#    locations: classpath:db/migration
+    locations: classpath:db/migration
     table: schema_history
     baseline-on-migrate: true
+
+logging:
+  level:
+    org.flywaydb: DEBUG
+
 sonar:
   host:
     url: ${SONAR_URL}
   login: ${HAPPENING_TOKEN}
-logging:
-  level:
-    org:
-      flywaydb: DEBUG
