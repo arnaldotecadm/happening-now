@@ -15,7 +15,7 @@ spring:
     username: ${DB_USER}
     password: ${DB_PASSWORD}
   flyway:
-    #clean-disabled: false
+    clean-disabled: false
     clean-on-validation-error: false
     locations: classpath:db/migration
     table: schema_history

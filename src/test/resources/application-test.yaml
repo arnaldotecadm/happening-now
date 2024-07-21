@@ -17,3 +17,6 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+    clean-on-validation-error: true
+    baseline-on-migrate: true
+    table: schema_history_test
