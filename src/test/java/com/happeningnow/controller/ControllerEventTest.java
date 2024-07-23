@@ -17,7 +17,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Collections;
 import java.util.List;
@@ -50,11 +54,13 @@ public class ControllerEventTest {
     public void save(){
         LocalDate startDate = LocalDate.of(2024, Month.APRIL, 15);
         LocalDate endDate = LocalDate.of(2024, Month.NOVEMBER, 15);
+        Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
+        Timestamp updatedAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images = new byte[0];
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Soccer", startDate, endDate,"FIFA", "FIFA", status, payed,
+        event = new Event("World Cup", "Soccer", startDate, endDate,updatedAt, createdAt, status, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(),Collections.emptyList(),Collections.emptyList(), Collections.emptyList()
         );
 
@@ -70,8 +76,8 @@ public class ControllerEventTest {
         Assertions.assertEquals("Soccer", responseEntity.getBody().getDescription());
         Assertions.assertEquals(startDate, responseEntity.getBody().getStartDate());
         Assertions.assertEquals(endDate, responseEntity.getBody().getEndDate());
-        Assertions.assertEquals("FIFA", responseEntity.getBody().getCreatedAt());
-        Assertions.assertEquals("FIFA", responseEntity.getBody().getUpdatedAt());
+        Assertions.assertEquals(createdAt, responseEntity.getBody().getCreatedAt());
+        Assertions.assertEquals(updatedAt, responseEntity.getBody().getUpdatedAt());
         Assertions.assertTrue(responseEntity.getBody().isStatus());
         //Assertions.assertFalse(responseEntity.getBody().isStatus());
         Assertions.assertTrue(responseEntity.getBody().isPayed());
@@ -87,11 +93,13 @@ public class ControllerEventTest {
     public void findById() {
         LocalDate startDate = LocalDate.of(2024, Month.APRIL, 15);
         LocalDate endDate = LocalDate.of(2024, Month.NOVEMBER, 15);
+        Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
+        Timestamp updatedAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images = new byte[0];
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Soccer", startDate, endDate, "FIFA", "FIFA", status, payed,
+        event = new Event("World Cup", "Soccer", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -112,8 +120,8 @@ public class ControllerEventTest {
         Assertions.assertEquals("Soccer", retrievedEvent.getDescription());
         Assertions.assertEquals(startDate, retrievedEvent.getStartDate());
         Assertions.assertEquals(endDate, retrievedEvent.getEndDate());
-        Assertions.assertEquals("FIFA", retrievedEvent.getCreatedAt());
-        Assertions.assertEquals("FIFA", retrievedEvent.getUpdatedAt());
+        Assertions.assertEquals(createdAt, retrievedEvent.getCreatedAt());
+        Assertions.assertEquals(updatedAt, retrievedEvent.getUpdatedAt());
         Assertions.assertTrue(retrievedEvent.isStatus());
         //Assertions.assertFalse(retrievedEvent.isStatus());
         Assertions.assertTrue(retrievedEvent.isPayed());
@@ -129,21 +137,25 @@ public class ControllerEventTest {
     public void listEvent() {
         LocalDate startDate = LocalDate.of(2024, Month.APRIL, 15);
         LocalDate endDate = LocalDate.of(2024, Month.NOVEMBER, 15);
+        Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
+        Timestamp updatedAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images = new byte[0];
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Soccer", startDate, endDate, "FIFA", "FIFA", status, payed,
+        event = new Event("World Cup", "Soccer", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com/FIFA", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
         LocalDate startDate2 = LocalDate.of(2024, Month.APRIL, 15);
         LocalDate endDate2 = LocalDate.of(2024, Month.NOVEMBER, 15);
+        Timestamp createdAt2 = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
+        Timestamp updatedAt2 = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images2 = new byte[0];
         boolean status2 = false;
         boolean payed2 = false;
 
-        event2 = new Event("volleyball", "volleyball 2", startDate2, endDate2, "FIVB", "FIVB", status2, payed2,
+        event2 = new Event("volleyball", "volleyball 2", startDate2, endDate2, createdAt2, updatedAt2, status2, payed2,
                 "www.github.com/FIVB", images2, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -163,9 +175,9 @@ public class ControllerEventTest {
 
         assertThat(events).isNotEmpty();
 
-        assertThat(events).extracting("name","description", "createdAt", "updatedAt","webPage")
-                .contains(tuple("World Cup","Soccer","FIFA","FIFA","www.github.com/FIFA"),
-                tuple("volleyball","volleyball 2","FIVB","FIVB","www.github.com/FIVB"));
+        assertThat(events).extracting("name","description", "webPage")
+                .contains(tuple("World Cup","Soccer", "www.github.com/FIFA"),
+                tuple("volleyball","volleyball 2", "www.github.com/FIVB"));
     }
 
 
@@ -174,11 +186,13 @@ public class ControllerEventTest {
     public void deleteEventById() {
         LocalDate startDate = LocalDate.of(2024, Month.APRIL, 15);
         LocalDate endDate = LocalDate.of(2024, Month.NOVEMBER, 15);
+        Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
+        Timestamp updatedAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images = new byte[0];
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Soccer", startDate, endDate, "FIFA", "FIFA", status, payed,
+        event = new Event("World Cup", "Soccer", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com/FIFA", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 

@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
 import java.lang.reflect.Array;
+import java.sql.Timestamp;
 import java.time.*;
 import java.util.Collections;
 import java.util.Date;
@@ -37,11 +38,13 @@ public class ServiceEventTest {
     public void creatEventPast(){
         LocalDate startDate = LocalDate.of(2024, Month.MARCH, 18);
         LocalDate endDate = LocalDate.of(2024, Month.MARCH, 20);
+        Timestamp createdAt = Timestamp.valueOf(LocalDateTime.now());
+        Timestamp updatedAt = Timestamp.valueOf(LocalDateTime.now());
         byte[] images = new byte[0];
         boolean status = false;
         boolean payed = false;
 
-        event = new Event("Birthday", "Birthday the Alex Sander", startDate, endDate,"Alex Sander", "Alex Sander", status, payed,
+        event = new Event("Birthday", "Birthday the Alex Sander", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(),Collections.emptyList(),Collections.emptyList(), Collections.emptyList()
                 );
 

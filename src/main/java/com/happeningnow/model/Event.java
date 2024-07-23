@@ -3,6 +3,8 @@ package com.happeningnow.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
+
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +26,9 @@ public class Event extends BaseEntity{
     @Column(name = "end_date")
     private LocalDate endDate;
     @Column(name = "created_at")
-    private String createdAt;
+    private Timestamp createdAt;
     @Column(name = "updated_at")
-    private String updatedAt;
+    private Timestamp updatedAt;
     private boolean status;
     private boolean payed;
     @Column(name = "web_page")
