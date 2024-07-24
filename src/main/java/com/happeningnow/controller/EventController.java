@@ -1,6 +1,5 @@
 package com.happeningnow.controller;
 
-
 import com.happeningnow.model.Event;
 import com.happeningnow.service.ServiceEvent;
 import org.springframework.web.bind.annotation.CrossOrigin;

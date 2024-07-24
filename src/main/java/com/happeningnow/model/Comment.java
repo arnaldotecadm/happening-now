@@ -1,11 +1,17 @@
 package com.happeningnow.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.UuidGenerator;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 

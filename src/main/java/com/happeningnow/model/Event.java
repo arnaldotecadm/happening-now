@@ -1,16 +1,18 @@
 package com.happeningnow.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.UuidGenerator;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
