@@ -38,7 +38,7 @@ class ServiceOrganizerTest {
 
     @Test
     @DisplayName("Must save a new organizer")
-    public void save(){
+    void save(){
 
         var result = serviceOrganizer.save(organizer);
 
@@ -50,7 +50,7 @@ class ServiceOrganizerTest {
 
     @Test
     @DisplayName("Must find organizer by ID")
-    public void findById(){
+    void findById(){
 
         serviceOrganizer.save(organizer);
 
@@ -61,7 +61,7 @@ class ServiceOrganizerTest {
 
     @Test
     @DisplayName("Must find all organizers")
-    public void listOrganizer(){
+    void listOrganizer(){
 
         serviceOrganizer.save(organizer);
 
@@ -74,7 +74,7 @@ class ServiceOrganizerTest {
 
     @Test
     @DisplayName("Must delete organizer")
-    public void deleteById(){
+    void deleteById(){
 
         serviceOrganizer.save(organizer);
 

@@ -25,10 +25,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
-
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class ControllerOrganizerTest {
+class ControllerOrganizerTest {
 
     @Autowired
     private TestRestTemplate resTemplate;
@@ -47,7 +46,7 @@ public class ControllerOrganizerTest {
 
     @Test
     @DisplayName("This controller method should save an organizer")
-    public void save() {
+    void save() {
         organizer1 = new Organizer(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
@@ -70,7 +69,7 @@ public class ControllerOrganizerTest {
 
     @Test
     @DisplayName("This controller method should find an organizer by id")
-    public void findById() {
+    void findById() {
         organizer1 = new Organizer(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
@@ -95,7 +94,7 @@ public class ControllerOrganizerTest {
 
     @Test
     @DisplayName("This controller method should find all organizers")
-    public void listOrganizers() {
+    void listOrganizers() {
         organizer1 = new Organizer(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );
@@ -125,10 +124,9 @@ public class ControllerOrganizerTest {
                         tuple("Arnaldo", "Dev", "Porto"));
 }
 
-
     @Test
     @DisplayName("This controller method should delete an organizer by id")
-    public void deleteOrganizerById() {
+    void deleteOrganizerById() {
         organizer1 = new Organizer(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );

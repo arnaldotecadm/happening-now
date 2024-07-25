@@ -6,7 +6,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -14,7 +13,7 @@ public abstract class ServiceAbstract<T, R extends JpaRepository<T, UUID>> imple
 
     protected final R repository;
 
-    public ServiceAbstract(R repository) {
+    protected ServiceAbstract(R repository) {
         this.repository = repository;
     }
 

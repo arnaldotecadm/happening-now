@@ -26,7 +26,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class ControllerLocationTest {
+class ControllerLocationTest {
 
     @Autowired
     private TestRestTemplate resTemplate;
@@ -45,7 +45,7 @@ public class ControllerLocationTest {
 
     @Test
     @DisplayName("This controller method should save a location")
-    public void save() {
+    void save() {
         location1 = new Location(
                 "Sander", "Dev", "Brasil", Collections.emptyList()
         );
@@ -68,7 +68,7 @@ public class ControllerLocationTest {
 
     @Test
     @DisplayName("This controller method should find a location by id")
-    public void findById() {
+    void findById() {
         location1 = new Location(
                 "Sander", "Dev", "Portugal", Collections.emptyList()
         );
@@ -93,7 +93,7 @@ public class ControllerLocationTest {
 
     @Test
     @DisplayName("This controller method should find all locations")
-    public void listLocations() {
+    void listLocations() {
         location1 = new Location(
                 "Sander", "Developer", "Portugal", Collections.emptyList()
         );
@@ -125,7 +125,7 @@ public class ControllerLocationTest {
 
     @Test
     @DisplayName("This controller method should delete a organizer by id")
-    public void deleteLocationById() {
+    void deleteLocationById() {
         location1 = new Location(
                 "Alex Sander", "Developer", "Portugal", Collections.emptyList()
         );

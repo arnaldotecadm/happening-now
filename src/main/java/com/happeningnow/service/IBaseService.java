@@ -3,9 +3,9 @@ package com.happeningnow.service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-public interface IBaseService<T, UUID> {
+public interface IBaseService<T, U> {
     T save(T t);
-    T findById(UUID id);
+    T findById(U id);
     Page<T> list(PageRequest pageRequest);
-    void deleteById(UUID id);
+    void deleteById(U id);
 }

@@ -20,8 +20,8 @@ import java.util.UUID;
 public class Comment extends BaseEntity {
 
     private String title;
-    @Column(nullable = false)
-    private String comment;
+    @Column(nullable = false, name = "comment_text")
+    private String commentText;
     @Column(name = "user_creation")
     private UUID userCreation;
     private int likes;

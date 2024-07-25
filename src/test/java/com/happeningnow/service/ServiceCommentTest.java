@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class ServiceCommentTest {
+class ServiceCommentTest {
 
     @Autowired
     private ServiceComment serviceComment;
@@ -36,12 +36,12 @@ public class ServiceCommentTest {
 
     @Test
     @DisplayName("Must save comments")
-    public void save(){
+    void save(){
         var result = serviceComment.save(comment);
 
         var size = commentRepository.findAll().size();
 
-        Assertions.assertEquals(result.getComment(), comment.getComment());
+        Assertions.assertEquals(result.getCommentText(), comment.getCommentText());
         Assertions.assertEquals(1, size, "Quantity comments test");
 
         Assertions.assertFalse(comment.getTitle().isEmpty(), "Title test");
@@ -52,7 +52,7 @@ public class ServiceCommentTest {
 
     @Test
     @DisplayName("Must find comment by id")
-    public void findById(){
+    void findById(){
         serviceComment.save(comment);
 
         var result = serviceComment.findById(comment.getId());
@@ -62,7 +62,7 @@ public class ServiceCommentTest {
 
     @Test
     @DisplayName("Must find all comments")
-    public void listComment(){
+    void listComment(){
         serviceComment.save(comment);
 
         Page<Comment>listOfComment =
@@ -74,7 +74,7 @@ public class ServiceCommentTest {
 
     @Test
     @DisplayName("Must delete comment")
-    public void deleteById(){
+    void deleteById(){
         serviceComment.save(comment);
 
         Page<Comment>listOfComment =

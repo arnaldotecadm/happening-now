@@ -3,7 +3,10 @@ package com.happeningnow.controller;
 import com.happeningnow.model.Artist;
 import com.happeningnow.repository.ArtistRepository;
 import com.happeningnow.util.CustomPageImpl;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -23,7 +26,7 @@ import static org.assertj.core.api.Assertions.tuple;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class ControllerArtistTest {
+class ControllerArtistTest {
 
     @Autowired
     private TestRestTemplate resTemplate;
@@ -42,7 +45,7 @@ public class ControllerArtistTest {
 
     @Test
     @DisplayName("This controller method should save an artist")
-    public void save(){
+    void save(){
         artist = new Artist(
                 "Alex Sander","software engineer", Collections.emptyList()
         );
@@ -64,7 +67,7 @@ public class ControllerArtistTest {
 
     @Test
     @DisplayName("This controller method should find an artist by id")
-    public void findById() {
+    void findById() {
         artist = new Artist(
           "Alex Sander","software engineer", Collections.emptyList()
         );
@@ -88,7 +91,7 @@ public class ControllerArtistTest {
 
     @Test
     @DisplayName("This controller method should find all artist")
-    public void listArtist() {
+    void listArtist() {
         artist = new Artist(
                 "Alex Sander","software engineer", Collections.emptyList()
         );
@@ -119,7 +122,7 @@ public class ControllerArtistTest {
 
     @Test
     @DisplayName("This controller method should delete an artist by id")
-    public void deleteArtistById(){
+    void deleteArtistById(){
         artist = new Artist(
                 "Alex Sander", "software engineer", Collections.emptyList()
         );

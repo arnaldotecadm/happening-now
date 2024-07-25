@@ -10,6 +10,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/comment")
 public class CommentController extends AbstractController<Comment,UUID>{
+
     public CommentController(ServiceComment service) {
         super(service);
     }

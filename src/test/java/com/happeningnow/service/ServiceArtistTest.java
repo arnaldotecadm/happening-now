@@ -14,7 +14,7 @@ import java.util.Collections;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class ServiceArtistTest {
+class ServiceArtistTest {
 
     @Autowired
     private ServiceArtist serviceArtist;
@@ -38,7 +38,7 @@ public class ServiceArtistTest {
 
     @Test
     @DisplayName("Must save a new artist")
-    public void save(){
+    void save(){
         var result = serviceArtist.save(artist);
 
         var size = artistRepository.findAll().size();
@@ -49,7 +49,7 @@ public class ServiceArtistTest {
 
     @Test
     @DisplayName("Must find artist by id")
-    public void findById(){
+    void findById(){
         serviceArtist.save(artist);
 
         var result = serviceArtist.findById(artist.getId());
@@ -59,7 +59,7 @@ public class ServiceArtistTest {
 
     @Test
     @DisplayName("Must find all artist")
-    public void artistList(){
+    void artistList(){
         serviceArtist.save(artist);
 
         Page<Artist>listOfArtist =
@@ -71,7 +71,7 @@ public class ServiceArtistTest {
 
     @Test
     @DisplayName("Must delete artist")
-    public void deleteById(){
+    void deleteById(){
         serviceArtist.save(artist);
 
         Page<Artist>listOfArtist =
