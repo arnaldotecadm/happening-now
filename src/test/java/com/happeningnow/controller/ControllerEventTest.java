@@ -58,7 +58,7 @@ class ControllerEventTest {
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Soccer", startDate, endDate,updatedAt, createdAt, status, payed,
+        event = new Event("World Cup", "Soccer", "20:00", "22:00", startDate, endDate,updatedAt, createdAt, status, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(),Collections.emptyList(),Collections.emptyList(), Collections.emptyList()
         );
 
@@ -95,7 +95,7 @@ class ControllerEventTest {
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Soccer", startDate, endDate, createdAt, updatedAt, status, payed,
+        event = new Event("World Cup", "Soccer", "20:00", "22:00", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -137,7 +137,7 @@ class ControllerEventTest {
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Soccer", startDate, endDate, createdAt, updatedAt, status, payed,
+        event = new Event("World Cup", "Soccer", "19:00", "00:00", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com/FIFA", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -149,7 +149,7 @@ class ControllerEventTest {
         boolean status2 = false;
         boolean payed2 = false;
 
-        event2 = new Event("volleyball", "volleyball 2", startDate2, endDate2, createdAt2, updatedAt2, status2, payed2,
+        event2 = new Event("volleyball", "volleyball 2", "20:00", "22:00", startDate2, endDate2, createdAt2, updatedAt2, status2, payed2,
                 "www.github.com/FIVB", images2, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -169,9 +169,9 @@ class ControllerEventTest {
 
         assertThat(events).isNotEmpty();
 
-        assertThat(events).extracting("name","description", "webPage")
-                .contains(tuple("World Cup","Soccer", "www.github.com/FIFA"),
-                tuple("volleyball","volleyball 2", "www.github.com/FIVB"));
+        assertThat(events).extracting("name","description", "startTime", "endTime", "webPage")
+                .contains(tuple("World Cup","Soccer", "19:00", "00:00", "www.github.com/FIFA"),
+                tuple("volleyball", "volleyball 2", "20:00", "22:00","www.github.com/FIVB"));
     }
 
     @Test
@@ -185,7 +185,7 @@ class ControllerEventTest {
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Soccer", startDate, endDate, createdAt, updatedAt, status, payed,
+        event = new Event("World Cup", "Soccer", "20:00", "22:00", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com/FIFA", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
