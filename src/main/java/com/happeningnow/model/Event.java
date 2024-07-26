@@ -23,6 +23,10 @@ public class Event extends BaseEntity{
     @Column(nullable = false)
     private String name;
     private String description;
+    @Column(name = "start_time")
+    private String startTime;
+    @Column(name = "end_time")
+    private String endTime;
     @Column(name = "start_date")
     private LocalDate startDate;
     @Column(name = "end_date")
