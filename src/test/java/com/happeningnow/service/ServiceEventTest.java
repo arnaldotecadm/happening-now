@@ -10,21 +10,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.lang.reflect.Array;
 import java.sql.Timestamp;
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Collections;
-import java.util.Date;
-import java.util.Locale;
-import java.util.UUID;
 
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class ServiceEventTest {
+class ServiceEventTest {
 
     @Autowired
     EventRepository eventRepository;
@@ -57,7 +52,7 @@ public class ServiceEventTest {
 
     @Test
     @DisplayName("Must save a new Event")
-    public void save(){
+    void save(){
         var result = serviceEvent.save(event);
 
         var size = eventRepository.findAll().size();
@@ -65,16 +60,14 @@ public class ServiceEventTest {
         Assertions.assertEquals(result.getName(), event.getName());
         Assertions.assertEquals(1, size, "The quantity of event is different");
 
-        //Assertions.assertTrue(event.isStatus(), "Event not be false");
         Assertions.assertFalse(event.isStatus(), "Event not be a true");
 
-        //Assertions.assertTrue(event.isPayed(), "Unpaid event ");
         Assertions.assertFalse(event.isPayed(),"Paid event");
     }
 
     @Test
     @DisplayName("Must find event by id")
-    public void findById(){
+    void findById(){
         serviceEvent.save(event);
 
         var result = eventRepository.findById(event.getId());
@@ -84,7 +77,7 @@ public class ServiceEventTest {
 
     @Test
     @DisplayName("Must find all events")
-    public void eventList(){
+    void eventList(){
         serviceEvent.save(event);
 
         Page<Event>listOfEvents =
@@ -96,7 +89,7 @@ public class ServiceEventTest {
 
     @Test
     @DisplayName("Must delete an event")
-    public void deleteById(){
+    void deleteById(){
         serviceEvent.save(event);
 
         Page<Event>listOfEvent =

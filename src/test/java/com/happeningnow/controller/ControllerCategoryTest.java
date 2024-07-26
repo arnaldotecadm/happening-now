@@ -26,7 +26,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class ControllerCategoryTest {
+class ControllerCategoryTest {
 
     @Autowired
     private TestRestTemplate resTemplate;
@@ -45,7 +45,7 @@ public class ControllerCategoryTest {
 
     @Test
     @DisplayName("This controller method should save a category")
-    public void save() {
+    void save() {
         category = new Category(
                 "Futebol", "Tag futebol", Collections.emptyList()
         );
@@ -67,7 +67,7 @@ public class ControllerCategoryTest {
 
     @Test
     @DisplayName("This controller method should find a category by id")
-    public void findById() {
+    void findById() {
         category = new Category(
                 "Futebol", "Tag futebol", Collections.emptyList()
         );
@@ -91,7 +91,7 @@ public class ControllerCategoryTest {
 
     @Test
     @DisplayName("This controller method should find all categories")
-    public void listCategories() {
+    void listCategories() {
         category = new Category(
                 "Futebol", "Tag futebol", Collections.emptyList()
         );
@@ -123,7 +123,7 @@ public class ControllerCategoryTest {
 
     @Test
     @DisplayName("This controller method should delete a category by id")
-    public void deleteCategoryById() {
+    void deleteCategoryById() {
         category = new Category(
                 "Futebol", "Tag de futebol", Collections.emptyList()
         );

@@ -14,7 +14,7 @@ import java.util.Collections;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class ServiceCategoryTest {
+class ServiceCategoryTest {
 
     @Autowired
     private ServiceCategory serviceCategory;
@@ -36,7 +36,7 @@ public class ServiceCategoryTest {
 
     @Test
     @DisplayName("Must save category")
-    public void save(){
+    void save(){
         var result = serviceCategory.save(category);
 
         var size = categoryRepository.findAll().size();
@@ -47,7 +47,7 @@ public class ServiceCategoryTest {
 
     @Test
     @DisplayName("Must find category by id")
-    public void findById(){
+    void findById(){
         serviceCategory.save(category);
 
         var result = serviceCategory.findById(category.getId());
@@ -57,7 +57,7 @@ public class ServiceCategoryTest {
 
     @Test
     @DisplayName("Must find all category")
-    public void categoryList(){
+    void categoryList(){
         serviceCategory.save(category);
 
         Page<Category>listOfCategory =
@@ -69,7 +69,7 @@ public class ServiceCategoryTest {
 
     @Test
     @DisplayName("Must delete category")
-    public void deleteById(){
+    void deleteById(){
         serviceCategory.save(category);
 
         Page<Category>listOfCategory =

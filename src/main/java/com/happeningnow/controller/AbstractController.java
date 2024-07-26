@@ -13,7 +13,7 @@ public abstract class AbstractController<T, P>{
 
     private IBaseService<T, P> service;
 
-    public AbstractController(IBaseService service) {
+    protected AbstractController(IBaseService service) {
         this.service = service;
     }
 

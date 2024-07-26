@@ -11,7 +11,6 @@ import java.util.UUID;
 @RequestMapping("/artist")
 public class ArtistController extends AbstractController<Artist, UUID>{
 
-
     public ArtistController(ServiceArtist service) {
         super(service);
     }

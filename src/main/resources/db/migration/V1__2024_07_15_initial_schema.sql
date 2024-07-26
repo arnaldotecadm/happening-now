@@ -17,7 +17,7 @@ CREATE TABLE category (
 -- TABLE comment;
 CREATE TABLE comment (
 	id uuid NOT NULL,
-	comment varchar(255) NOT NULL,
+	comment_text varchar(255) NOT NULL,
 	dislikes int4 NOT NULL,
 	likes int4 NOT NULL,
 	title varchar(255) NULL,

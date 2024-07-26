@@ -17,9 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -32,7 +30,7 @@ import static org.assertj.core.api.Assertions.tuple;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
-public class ControllerEventTest {
+class ControllerEventTest {
 
     @Autowired
     private TestRestTemplate resTemplate;
@@ -51,7 +49,7 @@ public class ControllerEventTest {
 
     @Test
     @DisplayName("This controller method should save an event")
-    public void save(){
+    void save(){
         LocalDate startDate = LocalDate.of(2024, Month.APRIL, 15);
         LocalDate endDate = LocalDate.of(2024, Month.NOVEMBER, 15);
         Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
@@ -79,9 +77,7 @@ public class ControllerEventTest {
         Assertions.assertEquals(createdAt, responseEntity.getBody().getCreatedAt());
         Assertions.assertEquals(updatedAt, responseEntity.getBody().getUpdatedAt());
         Assertions.assertTrue(responseEntity.getBody().isStatus());
-        //Assertions.assertFalse(responseEntity.getBody().isStatus());
         Assertions.assertTrue(responseEntity.getBody().isPayed());
-        //Assertions.assertFalse(responseEntity.getBody().isPayed());
         Assertions.assertEquals("www.github.com", responseEntity.getBody().getWebPage());
 
         Optional<Event> responseId = this.eventRepository.findById(responseEntity.getBody().getId());
@@ -90,7 +86,7 @@ public class ControllerEventTest {
 
     @Test
     @DisplayName("This controller method should find an event by id")
-    public void findById() {
+    void findById() {
         LocalDate startDate = LocalDate.of(2024, Month.APRIL, 15);
         LocalDate endDate = LocalDate.of(2024, Month.NOVEMBER, 15);
         Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
@@ -123,9 +119,7 @@ public class ControllerEventTest {
         Assertions.assertEquals(createdAt, retrievedEvent.getCreatedAt());
         Assertions.assertEquals(updatedAt, retrievedEvent.getUpdatedAt());
         Assertions.assertTrue(retrievedEvent.isStatus());
-        //Assertions.assertFalse(retrievedEvent.isStatus());
         Assertions.assertTrue(retrievedEvent.isPayed());
-        //Assertions.assertFalse(retrievedEvent.isPayed());
         Assertions.assertEquals("www.github.com", retrievedEvent.getWebPage());
 
         Optional<Event> responseId = this.eventRepository.findById(responseEntity.getBody().getId());
@@ -134,7 +128,7 @@ public class ControllerEventTest {
 
     @Test
     @DisplayName("This controller method should find all events")
-    public void listEvent() {
+    void listEvent() {
         LocalDate startDate = LocalDate.of(2024, Month.APRIL, 15);
         LocalDate endDate = LocalDate.of(2024, Month.NOVEMBER, 15);
         Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
@@ -180,10 +174,9 @@ public class ControllerEventTest {
                 tuple("volleyball","volleyball 2", "www.github.com/FIVB"));
     }
 
-
     @Test
     @DisplayName("This controller method should delete an event by id")
-    public void deleteEventById() {
+    void deleteEventById() {
         LocalDate startDate = LocalDate.of(2024, Month.APRIL, 15);
         LocalDate endDate = LocalDate.of(2024, Month.NOVEMBER, 15);
         Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());

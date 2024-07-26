@@ -14,7 +14,7 @@ import java.util.Collections;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class ServiceLocationTest {
+class ServiceLocationTest {
 
     @Autowired
     private ServiceLocation serviceLocation;
@@ -36,7 +36,7 @@ public class ServiceLocationTest {
 
     @Test
     @DisplayName("Must save location")
-    public void save(){
+    void save(){
         var result = serviceLocation.save(location);
 
         var size = locationRepository.findAll().size();
@@ -51,7 +51,7 @@ public class ServiceLocationTest {
 
     @Test
     @DisplayName("Must find locations by id")
-    public void findById(){
+    void findById(){
         serviceLocation.save(location);
 
         var result = serviceLocation.findById(location.getId());
@@ -61,7 +61,7 @@ public class ServiceLocationTest {
 
     @Test
     @DisplayName("Must find all locations")
-    public void locationList(){
+    void locationList(){
         serviceLocation.save(location);
 
         Page<Location>listOfLocations =
@@ -73,7 +73,7 @@ public class ServiceLocationTest {
 
     @Test
     @DisplayName("Must delete locations")
-    public void deleteById(){
+    void deleteById(){
         serviceLocation.save(location);
         Page<Location>listOfLocations =
                 serviceLocation.list(PageRequest.of(0,50, Sort.Direction.ASC,"Name"));
