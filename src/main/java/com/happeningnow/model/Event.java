@@ -22,7 +22,10 @@ public class Event extends BaseEntity{
 
     @Column(nullable = false)
     private String name;
-    private String description;
+    @Column(name = "long_description", length = 5000)
+    private String longDescription;
+    @Column(name = "short_description", length = 150)
+    private String shortDescription;
     @Column(name = "start_time")
     private String startTime;
     @Column(name = "end_time")

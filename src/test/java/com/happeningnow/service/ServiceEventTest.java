@@ -39,7 +39,7 @@ class ServiceEventTest {
         boolean status = false;
         boolean payed = false;
 
-        event = new Event("Birthday", "Birthday the Alex Sander", "20:00", "00:00", startDate, endDate, createdAt, updatedAt, status, payed,
+        event = new Event("Birthday", "Long description2", "Short description2", "20:00", "00:00", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(),Collections.emptyList(),Collections.emptyList(), Collections.emptyList()
                 );
     }
