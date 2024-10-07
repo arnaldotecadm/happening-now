@@ -38,7 +38,7 @@ public class Event extends BaseEntity{
     private Timestamp createdAt;
     @Column(name = "updated_at")
     private Timestamp updatedAt;
-    private boolean status;
+    private boolean statusEnum;
     private boolean payed;
     @Column(name = "web_page")
     private String webPage;
