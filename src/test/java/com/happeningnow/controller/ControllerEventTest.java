@@ -1,5 +1,6 @@
 package com.happeningnow.controller;
 
+import com.happeningnow.enuns.StatusEnum;
 import com.happeningnow.model.Event;
 import com.happeningnow.repository.EventRepository;
 import com.happeningnow.util.CustomPageImpl;
@@ -58,7 +59,7 @@ class ControllerEventTest {
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Long description", "Short description", "20:00", "22:00", startDate, endDate,updatedAt, createdAt, status, payed,
+        event = new Event("World Cup", "Long description", "Short description", "20:00", "22:00", startDate, endDate,updatedAt, createdAt, StatusEnum.ACTIVE, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(),Collections.emptyList(),Collections.emptyList(), Collections.emptyList()
         );
 
@@ -77,7 +78,7 @@ class ControllerEventTest {
         Assertions.assertEquals(endDate, responseEntity.getBody().getEndDate());
         Assertions.assertEquals(createdAt, responseEntity.getBody().getCreatedAt());
         Assertions.assertEquals(updatedAt, responseEntity.getBody().getUpdatedAt());
-        Assertions.assertTrue(responseEntity.getBody().isStatus());
+        Assertions.assertEquals(responseEntity.getBody().getStatusEnum(), StatusEnum.ACTIVE);
         Assertions.assertTrue(responseEntity.getBody().isPayed());
         Assertions.assertEquals("www.github.com", responseEntity.getBody().getWebPage());
 
@@ -96,7 +97,7 @@ class ControllerEventTest {
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Long description", "Short description","20:00", "22:00", startDate, endDate, createdAt, updatedAt, status, payed,
+        event = new Event("World Cup", "Long description", "Short description","20:00", "22:00", startDate, endDate, createdAt, updatedAt, StatusEnum.ACTIVE, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -120,7 +121,7 @@ class ControllerEventTest {
         Assertions.assertEquals(endDate, retrievedEvent.getEndDate());
         Assertions.assertEquals(createdAt, retrievedEvent.getCreatedAt());
         Assertions.assertEquals(updatedAt, retrievedEvent.getUpdatedAt());
-        Assertions.assertTrue(retrievedEvent.isStatus());
+        Assertions.assertEquals(retrievedEvent.getStatusEnum(), StatusEnum.ACTIVE);
         Assertions.assertTrue(retrievedEvent.isPayed());
         Assertions.assertEquals("www.github.com", retrievedEvent.getWebPage());
 
@@ -139,7 +140,7 @@ class ControllerEventTest {
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Long description", "Short description", "19:00", "00:00", startDate, endDate, createdAt, updatedAt, status, payed,
+        event = new Event("World Cup", "Long description", "Short description", "19:00", "00:00", startDate, endDate, createdAt, updatedAt, StatusEnum.ACTIVE, payed,
                 "www.github.com/FIFA", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -151,7 +152,7 @@ class ControllerEventTest {
         boolean status2 = false;
         boolean payed2 = false;
 
-        event2 = new Event("volleyball", "Long description2", "Short description2","20:00", "22:00", startDate2, endDate2, createdAt2, updatedAt2, status2, payed2,
+        event2 = new Event("volleyball", "Long description2", "Short description2","20:00", "22:00", startDate2, endDate2, createdAt2, updatedAt2, StatusEnum.INACTIVE, payed2,
                 "www.github.com/FIVB", images2, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -187,7 +188,7 @@ class ControllerEventTest {
         boolean status = true;
         boolean payed = true;
 
-        event = new Event("World Cup", "Long description", "Short description", "20:00", "22:00", startDate, endDate, createdAt, updatedAt, status, payed,
+        event = new Event("World Cup", "Long description", "Short description", "20:00", "22:00", startDate, endDate, createdAt, updatedAt, StatusEnum.ACTIVE, payed,
                 "www.github.com/FIFA", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 

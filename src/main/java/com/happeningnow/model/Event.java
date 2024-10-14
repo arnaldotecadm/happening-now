@@ -1,5 +1,6 @@
 package com.happeningnow.model;
 
+import com.happeningnow.enuns.StatusEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,7 +39,9 @@ public class Event extends BaseEntity{
     private Timestamp createdAt;
     @Column(name = "updated_at")
     private Timestamp updatedAt;
-    private boolean statusEnum;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private StatusEnum statusEnum;
     private boolean payed;
     @Column(name = "web_page")
     private String webPage;

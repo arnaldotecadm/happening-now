@@ -1,19 +1,11 @@
 package com.happeningnow.enuns;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public enum StatusEnum {
 
-@AllArgsConstructor
-@NoArgsConstructor
+    PENDING,
+    ACTIVE,
+    INACTIVE,
+    DELETED,
+    PENDING_ANALYSIS;
 
-public enum statusEnum {
-
-    PENDING("Pending"),
-    ACTIVE("Active"),
-    INACTIVE("Inactive"),
-    DELETED("Deleted"),
-    PENDING_ANALYSIS("Pending analysis");
-
-    private String status;
 }
