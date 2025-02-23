@@ -41,8 +41,6 @@ class ControllerEventTest {
 
     private Event event;
 
-    private Event event2;
-
     @AfterEach
     public void setUp(){
         this.eventRepository.deleteAll();
@@ -56,10 +54,10 @@ class ControllerEventTest {
         Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         Timestamp updatedAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images = new byte[0];
-        boolean status = true;
+        StatusEnum status = StatusEnum.ACTIVE;
         boolean payed = true;
 
-        event = new Event("World Cup", "Long description", "Short description", "20:00", "22:00", startDate, endDate,updatedAt, createdAt, StatusEnum.ACTIVE, payed,
+        event = new Event("World Cup", "Long description", "Short description", "20:00", "22:00", startDate, endDate,updatedAt, createdAt, status, payed,
                 "www.github.com", images, Collections.emptyList(), Collections.emptyList(),Collections.emptyList(),Collections.emptyList(), Collections.emptyList()
         );
 
@@ -78,7 +76,7 @@ class ControllerEventTest {
         Assertions.assertEquals(endDate, responseEntity.getBody().getEndDate());
         Assertions.assertEquals(createdAt, responseEntity.getBody().getCreatedAt());
         Assertions.assertEquals(updatedAt, responseEntity.getBody().getUpdatedAt());
-        Assertions.assertEquals(responseEntity.getBody().getStatusEnum(), StatusEnum.ACTIVE);
+        Assertions.assertEquals(responseEntity.getBody().getStatusEnum(), status);
         Assertions.assertTrue(responseEntity.getBody().isPayed());
         Assertions.assertEquals("www.github.com", responseEntity.getBody().getWebPage());
 
@@ -94,7 +92,7 @@ class ControllerEventTest {
         Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         Timestamp updatedAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images = new byte[0];
-        boolean status = true;
+        StatusEnum status = StatusEnum.ACTIVE;
         boolean payed = true;
 
         event = new Event("World Cup", "Long description", "Short description","20:00", "22:00", startDate, endDate, createdAt, updatedAt, StatusEnum.ACTIVE, payed,
@@ -121,7 +119,7 @@ class ControllerEventTest {
         Assertions.assertEquals(endDate, retrievedEvent.getEndDate());
         Assertions.assertEquals(createdAt, retrievedEvent.getCreatedAt());
         Assertions.assertEquals(updatedAt, retrievedEvent.getUpdatedAt());
-        Assertions.assertEquals(retrievedEvent.getStatusEnum(), StatusEnum.ACTIVE);
+        Assertions.assertEquals(retrievedEvent.getStatusEnum(), status);
         Assertions.assertTrue(retrievedEvent.isPayed());
         Assertions.assertEquals("www.github.com", retrievedEvent.getWebPage());
 
@@ -137,10 +135,10 @@ class ControllerEventTest {
         Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         Timestamp updatedAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images = new byte[0];
-        boolean status = true;
+        StatusEnum status = StatusEnum.ACTIVE;
         boolean payed = true;
 
-        event = new Event("World Cup", "Long description", "Short description", "19:00", "00:00", startDate, endDate, createdAt, updatedAt, StatusEnum.ACTIVE, payed,
+        event = new Event("World Cup", "Long description", "Short description", "19:00", "00:00", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com/FIFA", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -149,10 +147,10 @@ class ControllerEventTest {
         Timestamp createdAt2 = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         Timestamp updatedAt2 = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images2 = new byte[0];
-        boolean status2 = false;
+        StatusEnum status2 = StatusEnum.ACTIVE;
         boolean payed2 = false;
 
-        event2 = new Event("volleyball", "Long description2", "Short description2","20:00", "22:00", startDate2, endDate2, createdAt2, updatedAt2, StatusEnum.INACTIVE, payed2,
+        Event event2 = new Event("volleyball", "Long description2", "Short description2", "20:00", "22:00", startDate2, endDate2, createdAt2, updatedAt2, status2, payed2,
                 "www.github.com/FIVB", images2, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 
@@ -185,10 +183,10 @@ class ControllerEventTest {
         Timestamp createdAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         Timestamp updatedAt = new Timestamp(Timestamp.valueOf(LocalDateTime.now()).getTime());
         byte[] images = new byte[0];
-        boolean status = true;
+        StatusEnum status = StatusEnum.ACTIVE;
         boolean payed = true;
 
-        event = new Event("World Cup", "Long description", "Short description", "20:00", "22:00", startDate, endDate, createdAt, updatedAt, StatusEnum.ACTIVE, payed,
+        event = new Event("World Cup", "Long description", "Short description", "20:00", "22:00", startDate, endDate, createdAt, updatedAt, status, payed,
                 "www.github.com/FIFA", images, Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()
         );
 

@@ -1,5 +1,6 @@
 package com.happeningnow.service;
 
+import com.happeningnow.enuns.StatusEnum;
 import com.happeningnow.model.Event;
 import com.happeningnow.repository.EventRepository;
 import org.junit.jupiter.api.*;
@@ -36,7 +37,7 @@ class ServiceEventTest {
         Timestamp createdAt = Timestamp.valueOf(LocalDateTime.now());
         Timestamp updatedAt = Timestamp.valueOf(LocalDateTime.now());
         byte[] images = new byte[0];
-        boolean status = false;
+        StatusEnum status = StatusEnum.ACTIVE;
         boolean payed = false;
 
         event = new Event("Birthday", "Long description2", "Short description2", "20:00", "00:00", startDate, endDate, createdAt, updatedAt, status, payed,
@@ -59,7 +60,7 @@ class ServiceEventTest {
         Assertions.assertEquals(result.getName(), event.getName());
         Assertions.assertEquals(1, size, "The quantity of event is different");
 
-        Assertions.assertFalse(event.isStatus(), "Event not be a true");
+        Assertions.assertEquals(result.getStatusEnum(), event.getStatusEnum());
 
         Assertions.assertFalse(event.isPayed(),"Paid event");
     }
